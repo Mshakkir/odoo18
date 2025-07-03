@@ -21,7 +21,7 @@ Pillow
 psutil
 pydot
 pyparsing
-pyPdf2
+PyPDF2
 pyserial
 python-dateutil
 pytz
@@ -29,7 +29,6 @@ qrcode
 reportlab
 requests
 rjsmin
-vatnumber
 vobject
 XlsxWriter
 xlwt
