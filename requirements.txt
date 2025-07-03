@@ -37,4 +37,6 @@ xlrd
 PyYAML
 pyOpenSSL
 polib
+zeep
+
 
