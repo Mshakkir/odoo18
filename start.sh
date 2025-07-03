@@ -1,1 +1,1 @@
-python3 odoo/odoo-bin -c odoo.conf
+python3 odoo-bin -c odoo.conf
