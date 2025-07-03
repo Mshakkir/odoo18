@@ -6,7 +6,7 @@ ebaysdk
 gevent
 greenlet
 Jinja2
-lxml[html_clean]
+lxml_html_clean
 MarkupSafe
 num2words
 ofxparse
