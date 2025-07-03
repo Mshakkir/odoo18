@@ -1,0 +1,17 @@
+2025-07-03 04:18:34,660 3316 INFO ? odoo: Odoo version 18.0-20250702 
+2025-07-03 04:18:34,661 3316 INFO ? odoo: Using configuration file at C:\Users\welcome\Desktop\odoo18\server\odoo.conf 
+2025-07-03 04:18:34,661 3316 INFO ? odoo: addons paths: ['C:\\Users\\welcome\\Desktop\\odoo18\\server\\odoo\\addons', 'c:\\users\\welcome\\desktop\\odoo18\\sessions\\addons\\18.0', 'c:\\users\\welcome\\desktop\\odoo18\\server\\odoo\\addons'] 
+2025-07-03 04:18:34,661 3316 INFO ? odoo: database: openpg@localhost:5432 
+2025-07-03 04:18:36,328 3316 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at C:\Users\welcome\Desktop\odoo18\thirdparty\wkhtmltopdf.exe 
+2025-07-03 04:18:36,360 3316 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltoimage to generate images from html. 
+2025-07-03 04:18:39,004 3316 INFO ? odoo.service.server: Initiating shutdown 
+2025-07-03 04:18:39,004 3316 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-07-03 04:18:55,324 10604 INFO ? odoo: Odoo version 18.0-20250702 
+2025-07-03 04:18:55,324 10604 INFO ? odoo: Using configuration file at C:\Users\welcome\Desktop\odoo18\server\odoo.conf 
+2025-07-03 04:18:55,324 10604 INFO ? odoo: addons paths: ['C:\\Users\\welcome\\Desktop\\odoo18\\server\\odoo\\addons', 'c:\\users\\welcome\\desktop\\odoo18\\sessions\\addons\\18.0', 'c:\\users\\welcome\\desktop\\odoo18\\server\\odoo\\addons'] 
+2025-07-03 04:18:55,324 10604 INFO ? odoo: database: openpg@localhost:5432 
+2025-07-03 04:18:55,470 10604 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at C:\Users\welcome\Desktop\odoo18\thirdparty\wkhtmltopdf.exe 
+2025-07-03 04:18:55,487 10604 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltoimage to generate images from html. 
+2025-07-03 04:18:55,795 10604 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-6D3RLC4:8069 
+2025-07-03 04:18:56,149 10604 INFO ? odoo.sql_db: Connection to the database failed 
+2025-07-03 04:18:56,204 10604 INFO ? odoo.sql_db: Connection to the database failed 
