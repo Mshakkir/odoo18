@@ -36,3 +36,5 @@ xlwt
 xlrd
 PyYAML
 pyOpenSSL
+polib
+
