@@ -4,4 +4,4 @@ echo "Starting Odoo on Render using PORT=${PORT}"
 sed -i "s/^http_port *= *.*/http_port = ${PORT}/" odoo.conf
 
 # Start Odoo
-python3 odoo-bin -d database18 -i base --without-demo=True --admin-pass=odoo18
+python3 odoo-bin -d database18 -i base --without-demo=True
