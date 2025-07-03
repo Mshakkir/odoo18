@@ -9,13 +9,6 @@ sed -i "s/^http_port *= *.*/http_port = ${PORT}/" odoo.conf
 echo "Checking database status..."
 INIT_DB_FLAG_FILE="/opt/render/project/src/.init_done"
 
-if [ ! -f "$INIT_DB_FLAG_FILE" ]; then
-  echo "First-time DB init running - installing base..."
-  python3 odoo-bin -c odoo.conf -i base --without-demo=all --stop-after-init
-  touch "$INIT_DB_FLAG_FILE"
-else
-  echo "DB already initialized, skipping -i base"
-fi
+python3 odoo-bin -c odoo.conf -d database18 -u all --stop-after-init
 
-# Start Odoo
 exec python3 odoo-bin -c odoo.conf

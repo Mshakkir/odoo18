@@ -38,5 +38,6 @@ PyYAML
 pyOpenSSL
 polib
 zeep
+libsass
 
 
