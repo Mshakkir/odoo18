@@ -19,4 +19,5 @@ College ERP module handles:
     'auto_install': False,
     'depends': ['base'],
     'data': [],
+
 }
