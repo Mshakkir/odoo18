@@ -40,3 +40,5 @@ polib
 zeep
 libsass
 geoip2
+python-stdnum
+
