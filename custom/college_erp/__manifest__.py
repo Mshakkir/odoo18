@@ -3,7 +3,7 @@
     'name': "College ERP",
     'version': "18.0.1.1",
     'summary': "An ERP for college education",
-    'description': "A complete ERP solution for managing college admissions, exams, and administration.",
+    'description': """A complete ERP solution for managing college admissions, exams, and administration.""",
 
     'author': "Shakkir",
     'website': "https://shakkir.com",
