@@ -3,14 +3,10 @@
     'name': "College ERP",
     'version': "18.0.1.1",
     'summary': "An ERP for college education",
-    'description': """
-College ERP module handles:
-- Student admission
-- Exams
-- Administration
-- Timetables and more
-    """,
+    'description': "A complete ERP solution for managing college admissions, exams, and administration.",
+
     'author': "Shakkir",
+    'website': "https://shakkir.com",
     'license': "LGPL-3",
     'category': "Education",
     'sequence': 1,
