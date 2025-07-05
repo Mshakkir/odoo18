@@ -22,7 +22,7 @@ Pillow
 psutil
 pydot
 pyparsing
-PyPDF2
+PyPDF2==2.12.1
 pyserial
 python-dateutil
 pytz
