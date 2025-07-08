@@ -8,7 +8,7 @@
 
           <!-- Call original content -->
           <t t-set="o" t-value="o.with_context(lang=lang)"/>
-          <t t-call="account.report_invoice_document_body"/>
+          <t t-call="account.report_invoice_document"/>
 
           <!-- ✅ Add custom footer (bank info, stamp, etc.) -->
           <div class="mt-5" style="border-top: 1px solid #ddd; padding-top: 10px;">
