@@ -33,7 +33,7 @@
         </div>
         <div class="col-4 text-center">
           <!-- QR code base64 rendering -->
-          <img t-att-src="'/report/barcode/?type=QR&value=' + o.name" style="width:120px; height:120px;"/>
+          <img t-att-src="'/report/barcode/?type=QR&amp;value=' + o.name" style="width:120px; height:120px;"/>
           <br/>
           <img t-att-src="'/custom_sa_invoice/static/src/img/stamp.png'" style="width:100px;"/>
         </div>
