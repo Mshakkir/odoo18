@@ -9,6 +9,7 @@
     'depends': ['account', 'web'],
     'data': [
         'views/invoice_report.xml',
+        'report/report.xml',
     ],
     'assets': {
 
