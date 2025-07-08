@@ -1,64 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Inherit the default invoice report template -->
-  <template id="report_invoice_saudi" inherit_id="account.report_invoice_with_payments">
+  <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
 
-    <!-- Replace the entire external_layout to customize fully -->
-    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-      <t t-call="web.external_layout">
+    <!-- Add content BEFORE the default invoice lines -->
+    <xpath expr="//div[@class='page']" position="inside">
 
-        <!-- ✅ Custom header image -->
-        <div class="text-center mb-2">
-          <img t-att-src="'/custom_sa_invoice/static/src/img/header.png'" style="width: 100%;" />
+      <!-- Custom Header -->
+      <div class="text-center mb-2">
+        <img t-att-src="'/custom_sa_invoice/static/src/img/header.png'" style="width: 100%;" />
+      </div>
+
+      <!-- Dual Language Customer Info -->
+      <div class="row mt-2 mb-2">
+        <div class="col-6">
+          <strong>Sold To:</strong> <t t-esc="o.partner_id.name" /><br/>
+          <strong>VAT No:</strong> <t t-esc="o.partner_id.vat or ''" />
         </div>
-
-        <!-- ✅ Dual-language customer info -->
-        <div class="row mt-4 mb-2">
-          <div class="col-6">
-            <strong>Sold To:</strong>
-            <t t-esc="o.partner_id.name" /><br/>
-            <strong>VAT No:</strong> <t t-esc="o.partner_id.vat or ''" />
-          </div>
-          <div class="col-6 text-right">
-            <strong>تم البيع إلى:</strong><br/>
-            <t t-esc="o.partner_id.name" /><br/>
-            <strong>الرقم الضريبي:</strong> <t t-esc="o.partner_id.vat or ''" />
-          </div>
+        <div class="col-6 text-right">
+          <strong>تم البيع إلى:</strong><br/>
+          <t t-esc="o.partner_id.name" /><br/>
+          <strong>الرقم الضريبي:</strong> <t t-esc="o.partner_id.vat or ''" />
         </div>
+      </div>
 
-        <!-- ✅ Default invoice table and lines -->
-        <t t-call="account.report_invoice_document"/>
-
-        <!-- ✅ QR Code + Stamp + Signature -->
-        <div class="row mt32">
-          <div class="col-4 text-left">
-            <strong>Delivered by / تم التسليم بواسطة:</strong><br/><br/><br/>
-            ____________________________
-          </div>
-          <div class="col-4 text-center">
-            <!-- Dummy QR Code Example -->
-            <img t-att-src="'/report/barcode/?type=QR&amp;value=Sample%20QR%20Data'" style="width:120px; height:120px;"/>
-            <br/>
-            <!-- Stamp -->
-            <img t-att-src="'/custom_sa_invoice/static/src/img/stamp.png'" style="width:100px;"/>
-          </div>
-          <div class="col-4 text-right">
-            <strong>Received by / تم الاستلام بواسطة:</strong><br/><br/><br/>
-            ____________________________
-          </div>
-        </div>
-
-        <!-- ✅ Bank Details -->
-        <div class="mt32">
-          <strong>Bank Details:</strong><br/>
-          SNB Beneficiary Name: Sameer Sharaf Al-Otaibi Trading Co.<br/>
-          IBAN: SA29 1000 00 10768366000104<br/>
-          <strong>تفاصيل المصرف:</strong><br/>
-          اسم المستفيد: شركة سمير شرف العتيبي للتجارة<br/>
-          رقم الآيبان: SA29 1000 00 10768366000104
-        </div>
-
-      </t>
     </xpath>
+
+    <!-- Add content AFTER invoice lines -->
+    <xpath expr="//div[@class='page']" position="inside">
+      <div class="row mt32">
+        <div class="col-4 text-left">
+          <strong>Delivered by / تم التسليم بواسطة:</strong><br/><br/>
+          ____________________________
+        </div>
+        <div class="col-4 text-center">
+          <!-- QR code base64 rendering -->
+          <img t-att-src="'/report/barcode/?type=QR&value=' + o.name" style="width:120px; height:120px;"/>
+          <br/>
+          <img t-att-src="'/custom_sa_invoice/static/src/img/stamp.png'" style="width:100px;"/>
+        </div>
+        <div class="col-4 text-right">
+          <strong>Received by / تم الاستلام بواسطة:</strong><br/><br/>
+          ____________________________
+        </div>
+      </div>
+
+      <div class="mt32">
+        <strong>Bank Details:</strong><br/>
+        SNB Beneficiary Name: Sameer Sharaf Al-Otaibi Trading Co.<br/>
+        IBAN: SA29 1000 00 10768366000104<br/>
+        <strong>تفاصيل المصرف:</strong><br/>
+        اسم المستفيد: شركة سمير شرف العتيبي للتجارة<br/>
+        رقم الآيبان: SA29 1000 00 10768366000104
+      </div>
+    </xpath>
+
   </template>
 </odoo>

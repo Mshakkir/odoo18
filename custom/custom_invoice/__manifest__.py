@@ -1,14 +1,19 @@
 {
-    'name': 'Saudi Invoice Custom Layout',
+    'name': 'Invoice Custom Layout',
     'version': '1.0',
-    'summary': 'Customized Saudi-style invoice with ZATCA QR',
-    'description': 'Dual language, custom header, QR, stamp, bank info.',
+    'summary': 'Customized Saudi-compliant invoice layout with dual language, QR code, and bank details.',
+    'description': 'customized invoice',
     'category': 'Accounting',
-    'depends': ['account'],
+    'author': 'shakkir',
+    'license': 'LGPL-3',
+    'depends': ['account', 'web'],
     'data': [
         'views/invoice_report.xml',
     ],
-    'assets': {},
+    'assets': {
+
+    },
     'installable': True,
-    'license': 'LGPL-3',
+    'application': False,
+    'auto_install': False,
 }
