@@ -38,7 +38,7 @@
             <!-- QR Code -->
             <t t-set="qr_code" t-value="env['report.custom_sa_invoice.qr_helper'].generate_qr_base64(
               company.name, company.vat, o.invoice_date.strftime('%Y-%m-%d %H:%M:%S'), o.amount_total, o.amount_tax)"/>
-            <img t-att-src="'/report/barcode/?type=QR&value=' + qr_code" style="width:120px; height:120px;"/>
+            <img t-att-src="'/report/barcode/?type=QR&amp;value=' + qr_code" style="width:120px; height:120px;"/>
             <br/>
             <!-- Stamp -->
             <img t-att-src="'/custom_sa_invoice/static/src/img/stamp.png'" style="width:100px;"/>
