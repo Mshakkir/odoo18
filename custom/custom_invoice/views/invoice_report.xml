@@ -1,6 +1,7 @@
 <odoo>
   <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
-    <xpath expr="//div[@class='page']" position="replace">
+    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+      <t t-call="web.external_layout"/>
       <t t-call-assets="web.assets_backend" t-js="false">
         <link rel="stylesheet" href="/custom_invoice/static/src/css/invoice_styles.css"/>
       </t>
@@ -46,8 +47,9 @@
 
         <!-- Call original invoice lines and total -->
         <t t-set="o" t-value="o.with_context(lang=lang)"/>
+        <t t-call="account.report_invoice_document" />
 
-
+        
         <!-- Footer Section -->
         <div class="footer-section">
           <div class="footer-left">
