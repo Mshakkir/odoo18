@@ -1,32 +1,37 @@
 <odoo>
   <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
 
-    <!-- ✅ Replace Title: فاتورة ضريبية - Tax Invoice -->
-    <xpath expr="//h2" position="replace">
-      <h2 class="text-center">فاتورة ضريبية - Tax Invoice</h2>
-    </xpath>
+    <!-- ✅ Replace the full external layout block -->
+    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+      <t t-call="web.external_layout">
+        <div class="page">
 
-    <!-- ✅ Add ZATCA QR code below total section -->
-    <xpath expr="//div[contains(@class,'invoice_summary')]" position="after">
-      <div class="mt-3 text-center">
-        <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
-      </div>
-    </xpath>
+          <!-- ✅ Your custom dual-language title -->
+          <h2 class="text-center">فاتورة ضريبية - Tax Invoice</h2>
 
-    <!-- ✅ Add Stamp below QR code -->
-    <xpath expr="//div[contains(@class,'invoice_summary')]" position="after">
-      <div class="mt-2 text-center">
-        <img src="/custom_invoice/static/img/stamp.png" style="height: 100px;" alt="Company Stamp"/>
-      </div>
-    </xpath>
+          <!-- ✅ Original invoice content -->
+          <t t-set="o" t-value="o.with_context(lang=lang)"/>
+          <t t-call="account.report_invoice_document_body"/>
 
-    <!-- ✅ Add bank info at the bottom -->
-    <xpath expr="//div[@class='footer']" position="before">
-      <div class="mt-5" style="border-top: 1px solid #ddd; padding-top: 10px;">
-        <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
-        <p><strong>IBAN:</strong> SA12345678901234567890</p>
-        <p><strong>SWIFT:</strong> RJHISARI</p>
-      </div>
+          <!-- ✅ Add ZATCA QR -->
+          <div class="mt-3 text-center">
+            <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
+          </div>
+
+          <!-- ✅ Stamp image -->
+          <div class="mt-2 text-center">
+            <img src="/custom_invoice/static/img/stamp.png" style="height: 100px;" alt="Stamp"/>
+          </div>
+
+          <!-- ✅ Custom footer (Bank info) -->
+          <div class="mt-5" style="border-top: 1px solid #ddd; padding-top: 10px;">
+            <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
+            <p><strong>IBAN:</strong> SA12345678901234567890</p>
+            <p><strong>SWIFT:</strong> RJHISARI</p>
+          </div>
+
+        </div>
+      </t>
     </xpath>
 
   </template>
