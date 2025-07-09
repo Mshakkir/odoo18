@@ -1,8 +1,7 @@
 <odoo>
   <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
-    <xpath expr="//div[contains(@class, 'page')]" position="replace">
+    <xpath expr="//div[contains(@class, 'page')]" position="inside">
       <div class="page">
-
         <!-- Company Header -->
         <div class="dual-header">
           <div class="header-left">
@@ -29,7 +28,7 @@
 
         <!-- Original invoice content -->
         <t t-set="o" t-value="o.with_context(lang=lang)"/>
-        <t t-call="account.report_invoice_document_body"/>
+        <t t-call="account.report_invoice_document"/>
 
         <!-- Footer (QR, Stamp, Bank Info) -->
         <div class="invoice-footer">

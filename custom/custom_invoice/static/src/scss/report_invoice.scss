@@ -1,0 +1,34 @@
+.page {
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+}
+
+.dual-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.dual-header div {
+  width: 48%;
+}
+
+.text-center {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.invoice-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+.bank-details {
+  border-top: 1px solid #000;
+  padding-top: 10px;
+  font-weight: bold;
+}
