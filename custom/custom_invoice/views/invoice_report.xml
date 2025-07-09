@@ -1,73 +1,69 @@
 <odoo>
   <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
-    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-      <t t-call="web.external_layout">
+
+    <!-- ✅ Load your custom CSS -->
+    <xpath expr="//t[@t-call='web.external_layout']" position="before">
       <t t-call-assets="web.assets_backend" t-js="false"/>
-        <link rel="stylesheet" href="/custom_invoice/static/src/css/invoice_styles.css"/>
-      </t>
+      <link rel="stylesheet" href="/custom_invoice/static/src/css/invoice_styles.css"/>
+    </xpath>
 
-      <div class="page">
-
-        <!-- Header: Company Info in Arabic & English -->
-        <div class="dual-header">
-          <div class="header-left">
-            <p><strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong></p>
-            <p>C.R: 4030216154</p>
-            <p>VAT Reg#: 311299944700003</p>
-            <p>Al Awaer Center, Showroom No. 12,<br/>Baladey Street, Jeddah-23333, Saudi Arabia</p>
-            <p>Tel: 0505132833</p>
-            <p>Email: ssaoe.jeddah@gmail.com</p>
-          </div>
-          <div class="header-right">
-            <p><strong>شركة سمير شرف العتيبي التجارية</strong></p>
-            <p>س.ت: 4030216154</p>
-            <p>الرقم الضريبي: 311299944700003</p>
-            <p>مركز العوير، معرض رقم 12،<br/>شارع البلدية، جدة - 23333، المملكة العربية السعودية</p>
-            <p>الهاتف: 0505132833</p>
-            <p>البريد الإلكتروني: ssaoe.jeddah@gmail.com</p>
-          </div>
+    <!-- ✅ Replace header inside external_layout_header -->
+    <xpath expr="//div[@class='header']" position="replace">
+      <div class="dual-header">
+        <div class="header-left">
+          <p><strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong></p>
+          <p>C.R: 4030216154</p>
+          <p>VAT Reg#: 311299944700003</p>
+          <p>Al Awaer Center, Showroom No. 12,<br/>Baladey Street, Jeddah-23333, Saudi Arabia</p>
+          <p>Tel: 0505132833</p>
+          <p>Email: ssaoe.jeddah@gmail.com</p>
         </div>
-
-        <div class="text-center" style="margin: 10px 0;">
-          <h2>فاتورة ضريبية / Tax Invoice</h2>
-        </div>
-
-        <!-- Invoice Metadata Fields (Sample values) -->
-        <table class="table table-sm table-bordered">
-          <tr>
-            <td><strong>VAT NO :</strong> 300046647800003</td>
-            <td><strong>Date:</strong> <t t-esc="o.invoice_date"/></td>
-            <td><strong>Delivery Date:</strong> <t t-esc="o.invoice_date_due"/></td>
-          </tr>
-          <tr>
-            <td><strong>Invoice No:</strong> <t t-esc="o.name"/></td>
-            <td colspan="2"><strong>Delivery Note No:</strong> ____________</td>
-          </tr>
-        </table>
-
-        <!-- Call original invoice lines and total -->
-        <t t-set="o" t-value="o.with_context(lang=lang)"/>
-        <t t-call="account.report_invoice_document" />
-
-
-        <!-- Footer Section -->
-        <div class="footer-section">
-          <div class="footer-left">
-            <p><strong>Delivered by / تم التسليم:</strong> ______________________</p>
-            <p><strong>Received by / تم الاستلام:</strong> ______________________</p>
-            <img src="/custom_invoice/static/src/img/stamp.png" style="height: 100px;" alt="Stamp"/>
-          </div>
-          <div class="footer-right">
-            <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
-          </div>
-        </div>
-
-        <div class="bank-details">
-          <p><strong>Bank Details / التفاصيل المصرفية:</strong></p>
-          <p>SNB Beneficiary Name: Sameer Sharaf Al-Otaibi Trading Co.</p>
-          <p>IBAN: SA29 1000 00 10768366000104</p>
+        <div class="header-right">
+          <p><strong>شركة سمير شرف العتيبي التجارية</strong></p>
+          <p>س.ت: 4030216154</p>
+          <p>الرقم الضريبي: 311299944700003</p>
+          <p>مركز العوير، معرض رقم 12،<br/>شارع البلدية، جدة - 23333، المملكة العربية السعودية</p>
+          <p>الهاتف: 0505132833</p>
+          <p>البريد الإلكتروني: ssaoe.jeddah@gmail.com</p>
         </div>
       </div>
     </xpath>
+
+    <!-- ✅ Add extra content above footer -->
+    <xpath expr="//div[@class='invoice_signature']" position="before">
+      <div class="text-center" style="margin: 10px 0;">
+        <h2>فاتورة ضريبية / Tax Invoice</h2>
+      </div>
+
+      <table class="table table-sm table-bordered">
+        <tr>
+          <td><strong>VAT NO :</strong> 300046647800003</td>
+          <td><strong>Date:</strong> <t t-esc="o.invoice_date"/></td>
+          <td><strong>Delivery Date:</strong> <t t-esc="o.invoice_date_due"/></td>
+        </tr>
+        <tr>
+          <td><strong>Invoice No:</strong> <t t-esc="o.name"/></td>
+          <td colspan="2"><strong>Delivery Note No:</strong> ____________</td>
+        </tr>
+      </table>
+
+      <div class="footer-section">
+        <div class="footer-left">
+          <p><strong>Delivered by / تم التسليم:</strong> ______________________</p>
+          <p><strong>Received by / تم الاستلام:</strong> ______________________</p>
+          <img src="/custom_invoice/static/src/img/stamp.png" style="height: 100px;" alt="Stamp"/>
+        </div>
+        <div class="footer-right">
+          <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
+        </div>
+      </div>
+
+      <div class="bank-details">
+        <p><strong>Bank Details / التفاصيل المصرفية:</strong></p>
+        <p>SNB Beneficiary Name: Sameer Sharaf Al-Otaibi Trading Co.</p>
+        <p>IBAN: SA29 1000 00 10768366000104</p>
+      </div>
+    </xpath>
+
   </template>
 </odoo>
