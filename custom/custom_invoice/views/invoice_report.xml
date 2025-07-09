@@ -1,30 +1,54 @@
 <odoo>
   <template id="report_invoice_saudi" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[contains(@class, 'page')]" position="replace">
+      <div class="page">
 
-    <!-- ✅ Inject your custom header inside the external layout page -->
-    <xpath expr="//div[contains(@class, 'page')]" position="before">
-      <div class="text-center" style="margin-bottom: 20px;">
-        <h2>فاتورة ضريبية - Tax Invoice</h2>
-      </div>
-    </xpath>
+        <!-- Company Header -->
+        <div class="dual-header">
+          <div class="header-left">
+            <p><strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong></p>
+            <p>C.R: 4030216154</p>
+            <p>VAT: 311299944700003</p>
+            <p>Address: Al Awaer Center, Jeddah</p>
+            <p>Phone: 0505132833</p>
+            <p>Email: ssaoe.jeddah@gmail.com</p>
+          </div>
+          <div class="header-right" style="text-align: right;">
+            <p><strong>شركة سمير شرف العتيبي التجارية</strong></p>
+            <p>س.ت: 4030216154</p>
+            <p>الرقم الضريبي: 311299944700003</p>
+            <p>العنوان: مركز العوير، جدة</p>
+            <p>الهاتف: 0505132833</p>
+            <p>البريد الإلكتروني: ssaoe.jeddah@gmail.com</p>
+          </div>
+        </div>
 
-    <!-- ✅ Add QR + Stamp + Bank Info at the bottom of the page -->
-      <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-      <div class="mt-4 text-center">
-        <!-- ZATCA QR Code -->
-        <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
-      </div>
+        <div class="text-center" style="margin: 10px 0;">
+          <h2>فاتورة ضريبية / Tax Invoice</h2>
+        </div>
 
-      <div class="mt-2 text-center">
-        <!-- Stamp Image -->
-        <img src="/custom_invoice/static/img/stamp.png" style="height: 100px;" alt="Stamp"/>
-      </div>
+        <!-- Original invoice content -->
+        <t t-set="o" t-value="o.with_context(lang=lang)"/>
+        <t t-call="account.report_invoice_document_body"/>
 
-      <div class="mt-4" style="border-top: 1px solid #ccc; padding-top: 10px;">
-        <!-- Bank Info -->
-        <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
-        <p><strong>IBAN:</strong> SA12345678901234567890</p>
-        <p><strong>SWIFT:</strong> RJHISARI</p>
+        <!-- Footer (QR, Stamp, Bank Info) -->
+        <div class="invoice-footer">
+          <div class="left-col">
+            <p><strong>Received By / تم الاستلام:</strong> ______________________</p>
+            <img src="/custom_invoice/static/img/stamp.png" style="height: 100px;" alt="Stamp"/>
+          </div>
+          <div class="right-col" style="text-align: right;">
+            <p><strong>Delivered By / تم التسليم:</strong> ______________________</p>
+            <img t-att-src="o._generate_qr_code(silent_errors=True)" style="width: 150px;" alt="QR Code"/>
+          </div>
+        </div>
+
+        <div class="bank-details" style="margin-top: 20px;">
+          <p><strong>Bank Details / التفاصيل المصرفية:</strong></p>
+          <p>SNB Beneficiary Name: Sameer Sharaf Al-Otaibi Trading Co.</p>
+          <p>IBAN: SA29 1000 00 10768366000104</p>
+        </div>
+
       </div>
     </xpath>
 
