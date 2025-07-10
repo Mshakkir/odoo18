@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 echo "Starting Odoo on Render using PORT=$PORT"
 

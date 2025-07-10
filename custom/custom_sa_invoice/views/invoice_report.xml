@@ -1,0 +1,27 @@
+<odoo>
+  <template id="report_invoice_document_saudi" inherit_id="account.report_invoice_document">
+    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+      <t t-call="custom_sa_invoice.external_layout_boxed_saudi"/>
+    </xpath>
+
+    <xpath expr="//div[@class='row mt32 mb32']" position="after">
+      <div class="row mt16">
+        <div class="col-6 text-center">
+          <strong>Received By:</strong>
+          <img src="/custom_sa_invoice/static/img/stamp.png" style="height: 80px; margin-top: 10px;"/>
+        </div>
+        <div class="col-6 text-center">
+          <strong>Delivered By:</strong>
+        </div>
+      </div>
+      <div class="row mt8 text-center">
+        <img t-att-src="'data:image/png;base64,%s' % o.generate_qr_base64()" style="height:90px;"/>
+      </div>
+      <div class="row mt8">
+        <div class="col-12 text-center">
+          <strong t-esc="o.amount_to_text_ar(o.amount_total)"/>
+        </div>
+      </div>
+    </xpath>
+  </template>
+</odoo>

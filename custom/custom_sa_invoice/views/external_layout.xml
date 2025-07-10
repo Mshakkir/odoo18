@@ -1,0 +1,26 @@
+<odoo>
+  <template id="external_layout_boxed_saudi" inherit_id="web.external_layout_boxed">
+    <xpath expr="//div[@class='header o_company_#{company.id}_layout']" position="replace">
+      <div class="row">
+        <div class="col-6">
+          <img src="/custom_sa_invoice/static/img/logo.png" style="height: 80px"/>
+        </div>
+        <div class="col-6 text-end">
+          <strong>شركة سمير شرف العتيبي للتجارة</strong><br/>
+          SAMEER SHARAF AL OTAIBI TRADING COMPANY<br/>
+          C.R: 4030216154 &nbsp; VAT: 311399249700003<br/>
+          Al Awser Center, Jeddah, Saudi Arabia<br/>
+          Email: ssaore.jeddah@gmail.com
+        </div>
+      </div>
+    </xpath>
+
+    <xpath expr="//div[@class='footer']" position="inside">
+      <div class="text-center mt-3">
+        <strong>Bank Details:</strong> SNB<br/>
+        Beneficiary: Sameer Sharaf Al-Otaibi Trading Co.<br/>
+        IBAN: SA29 1000 00 10768366000104
+      </div>
+    </xpath>
+  </template>
+</odoo>
