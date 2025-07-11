@@ -6,4 +6,3 @@ apt-get install -y nodejs
 npm install -g rtlcss
 
 
-apt-get update && apt-get install -y libpango1.0-0 libpangocairo-1.0-0 libcairo2 libjpeg-dev libfreetype6-dev
