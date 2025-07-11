@@ -18,4 +18,4 @@ chmod +x /tmp/local/bin/wkhtmltopdf
 # Optional: verify version
 /tmp/local/bin/wkhtmltopdf --version
 
-apt-get update && apt-get install -y libpango1.0-0 libpangocairo-1.0-0 libcairo2 libjpeg-dev libfreetype6-dev
+#apt-get update && apt-get install -y libpango1.0-0 libpangocairo-1.0-0 libcairo2 libjpeg-dev libfreetype6-dev
