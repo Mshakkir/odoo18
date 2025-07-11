@@ -1,8 +1,8 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
     <!-- Replace the company header -->
-    <xpath expr="//div[@class='header']" position="replace">
-      <div class="header" style="text-align: center;">
+    <xpath expr="//div[@class='page']" position="before">
+      <div class="page" style="text-align: center;">
         <h2>فاتورة ضريبية / Tax Invoice</h2>
         <div>
           <strong>Company:</strong> <t t-esc="company.name"/><br/>
