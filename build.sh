@@ -15,3 +15,5 @@ dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb || apt-get install -f -y
 
 # Cleanup
 rm wkhtmltox_0.12.6-1.focal_amd64.deb
+
+apt-get update && apt-get install -y libpango1.0-0 libpangocairo-1.0-0 libcairo2 libjpeg-dev libfreetype6-dev

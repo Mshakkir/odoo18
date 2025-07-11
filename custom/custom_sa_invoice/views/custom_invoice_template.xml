@@ -2,7 +2,7 @@
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
     <!-- ✅ 1. Add Arabic Title inside the invoice page -->
-    <xpath expr="//div[@class='page mb-4']" position="inside">
+    <xpath expr="//div[hasclass('page')]" position="inside">
       <div class="text-center mb-3">
         <h2 style="font-weight:bold;">فاتورة ضريبية / Tax Invoice</h2>
       </div>

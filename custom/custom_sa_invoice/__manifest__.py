@@ -2,6 +2,7 @@
     'name': 'Saudi Invoice Customization',
     'version': '1.0',
     'depends': ['account','base'],
+    'license': 'LGPL-3',
     'data': [
         'views/custom_invoice_template.xml',
     ],

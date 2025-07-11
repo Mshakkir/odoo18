@@ -28,6 +28,7 @@ python-dateutil
 pytz
 qrcode
 reportlab
+pycairo
 requests
 rjsmin
 vobject
