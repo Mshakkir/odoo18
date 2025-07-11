@@ -4,7 +4,9 @@
       <t t-call="custom_sa_invoice.external_layout_boxed_saudi"/>
     </xpath>
 
-    <xpath expr="//div[contains(@class, 'row')]" position="after">
+    <xpath expr="//div[@class='clearfix invoice_main']" position="before">
+    
+
       <div class="row mt16">
         <div class="col-6 text-center">
           <strong>Received By:</strong>
