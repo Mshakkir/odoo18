@@ -1,27 +1,48 @@
 <odoo>
-  <template id="report_invoice_document_saudi" inherit_id="account.report_invoice_document">
-    <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-      <t t-call="custom_sa_invoice.external_layout_boxed_saudi"/>
+  <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
+    <!-- Replace the company header -->
+    <xpath expr="//div[@class='header']" position="replace">
+      <div class="header" style="text-align: center;">
+        <h2>فاتورة ضريبية / Tax Invoice</h2>
+        <div>
+          <strong>Company:</strong> <t t-esc="company.name"/><br/>
+          <strong>VAT No:</strong> <t t-esc="company.vat"/><br/>
+          <strong>Country:</strong> <t t-esc="company.country_id.name"/>
+        </div>
+      </div>
     </xpath>
 
-    <!-- ✅ Updated XPath here -->
-    <xpath expr="//div[@id='informations']" position="after">
-      <div class="row mt16">
-        <div class="col-6 text-center">
-          <strong>Received By:</strong>
-          <img src="/custom_sa_invoice/static/img/stamp.png" style="height: 80px; margin-top: 10px;"/>
-        </div>
-        <div class="col-6 text-center">
-          <strong>Delivered By:</strong>
-        </div>
+    <!-- Add ZATCA-compliant QR Code -->
+    <xpath expr="//div[@class='invoice_line_table']" position="before">
+      <div style="text-align: right;">
+        <img t-if="o.zatca_qr_code" t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="150" height="150"/>
       </div>
-      <div class="row mt8 text-center">
-        <img t-att-src="'data:image/png;base64,%s' % o.generate_qr_base64()" style="height:90px;"/>
-      </div>
-      <div class="row mt8">
-        <div class="col-12 text-center">
-          <strong t-esc="o.amount_to_text_ar(o.amount_total)"/>
-        </div>
+    </xpath>
+
+    <!-- Add Arabic + English column headers -->
+    <xpath expr="//thead/tr/th[1]" position="replace">
+      <th>Description / الوصف</th>
+    </xpath>
+    <xpath expr="//thead/tr/th[2]" position="after">
+      <th>Quantity / الكمية</th>
+      <th>Unit Price / سعر الوحدة</th>
+      <th>Total / الإجمالي</th>
+    </xpath>
+
+    <!-- Add total in words in Arabic -->
+    <xpath expr="//div[@class='total']" position="after">
+      <p>
+        <strong>Total in Words (Arabic):</strong>
+        <t t-esc="o.currency_id.amount_to_text(o.amount_total, lang='ar')"/>
+      </p>
+    </xpath>
+
+    <!-- Add stamp, bank details, and footer -->
+    <xpath expr="//div[@class='footer']" position="replace">
+      <div class="footer" style="margin-top: 30px; text-align: left;">
+        <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
+        <p><strong>IBAN:</strong> SA12345678901234567890</p>
+        <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100"/>
       </div>
     </xpath>
   </template>

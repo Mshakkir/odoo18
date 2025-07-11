@@ -1,14 +1,15 @@
 {
-    "name": "Saudi Custom Invoice",
-    "version": "1.0",
-    "depends": ["account", "base"],
-    "category": "Accounting",
-    "summary": "Saudi Arabia compliant invoice format ",
-    "data": [
-        "views/invoice_report.xml",
-        "views/external_layout.xml",
+    'name': 'Saudi Invoice Customization',
+    'version': '1.0',
+    'depends': ['account','base'],
+    'data': [
+        'views/custom_invoice_template.xml',
     ],
-    "assets": {},
-    "installable": True,
-    "auto_install": False,
+     'assets': {
+        'web.report_assets_common': [
+        'custom_sa_invoice/static/src/img/stamp.png',
+     ],
+    },
+    'installable': True,
+    'auto_install': False,
 }
