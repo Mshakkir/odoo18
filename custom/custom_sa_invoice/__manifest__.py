@@ -4,6 +4,7 @@
     'depends': ['account','base'],
     'license': 'LGPL-3',
     'data': [
+        'views/report_invoice_wrapper_custom.xml',
         'views/custom_invoice_template.xml',
         'views/override_invoice_report.xml',
     ],
