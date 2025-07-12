@@ -5,6 +5,7 @@
     'license': 'LGPL-3',
     'data': [
         'views/custom_invoice_template.xml',
+        'views/report_action.xml',
     ],
      'assets': {
         'web.report_assets_common': [
