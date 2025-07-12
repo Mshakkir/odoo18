@@ -23,7 +23,10 @@
     <!-- ✅ Add ZATCA QR Code -->
     <xpath expr="//table[@name='invoice_line_table']" position="before">
       <div class="text-end mb-2">
-        <img t-if="o.zatca_qr_code" t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
+        <t t-if="'zatca_qr_code' in o and o.zatca_qr_code">
+        <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
+       </t>
+
       </div>
     </xpath>
 
