@@ -1,9 +1,6 @@
+
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
-
-
-    <t t-foreach="docs" t-as="o">
-      <t t-call="account.report_invoice_document"/>
 
     <!-- ✅ Add Arabic Title -->
     <xpath expr="//div[hasclass('page')]" position="inside">
@@ -46,8 +43,6 @@
         <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>
       </div>
     </xpath>
-    </t>
-    
 
   </template>
 </odoo>
