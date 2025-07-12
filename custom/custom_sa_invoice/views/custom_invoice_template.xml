@@ -1,10 +1,9 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
-    <!-- ✅ SAFELY define o BEFORE anything uses it -->
-    <xpath expr="//div[hasclass('page')]" position="before">
-      <t t-set="o" t-value="docs[0]"/>
-    </xpath>
+   <t t-call="web.html_container">
+   <t t-foreach="docs" t-as="o">
+    <t t-call="account.report_invoice_document">
 
     <!-- ✅ Add Arabic Title -->
     <xpath expr="//div[hasclass('page')]" position="inside">
@@ -47,6 +46,8 @@
         <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>
       </div>
     </xpath>
-
+    </t>
+   </t>
+   </t>
   </template>
 </odoo>
