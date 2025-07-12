@@ -22,7 +22,7 @@
     <!-- ✅ 3. Add ZATCA QR code before invoice lines -->
     <xpath expr="//table[@name='invoice_line_table']" position="before">
       <div class="text-end mb-2">
-        <img t-if="o.zatca_qr_code" t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
+        <img t-if="docs[0].zatca_qr_code" t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
       </div>
     </xpath>
 
@@ -30,7 +30,7 @@
     <xpath expr="//div[@id='right-elements']" position="inside">
       <p class="text-end mt-2">
         <strong>Total in Arabic Words:</strong>
-        <t t-esc="o.currency_id.amount_to_text(o.amount_total, lang='ar')"/>
+        <t t-esc="docs[0].currency_id.amount_to_text(docs[0].amount_total, lang='ar')"/>
       </p>
     </xpath>
 
