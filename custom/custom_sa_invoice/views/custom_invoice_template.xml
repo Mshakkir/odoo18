@@ -1,7 +1,9 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
-     <t t-set="o" t-value="docs[0]"/>
+    <xpath expr="//div[contains(@class, 'page')]" position="inside">
+      <t t-set="o" t-value="docs[0]"/>
+    </xpath>
 
     <!-- ✅ Add Arabic Title -->
     <xpath expr="//div[hasclass('page')]" position="inside">
