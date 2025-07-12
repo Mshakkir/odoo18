@@ -1,17 +1,19 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
-     <xpath expr="//div[hasclass('page')]" position="before">
+    <!-- ✅ SAFELY define o BEFORE anything uses it -->
+    <xpath expr="//div[hasclass('page')]" position="before">
       <t t-set="o" t-value="docs[0]"/>
     </xpath>
-    <!-- ✅ 1. Add Arabic Title inside the invoice page -->
+
+    <!-- ✅ Add Arabic Title -->
     <xpath expr="//div[hasclass('page')]" position="inside">
       <div class="text-center mb-3">
         <h2 style="font-weight:bold;">فاتورة ضريبية / Tax Invoice</h2>
       </div>
     </xpath>
 
-    <!-- ✅ 2. Replace invoice item table with Arabic-English columns -->
+    <!-- ✅ Replace Table Headers -->
     <xpath expr="//table[@name='invoice_line_table']/thead/tr" position="replace">
       <tr>
         <th class="text-start">Description / الوصف</th>
@@ -22,22 +24,22 @@
       </tr>
     </xpath>
 
-    <!-- ✅ 3. Add ZATCA QR code before invoice lines -->
+    <!-- ✅ Add ZATCA QR Code -->
     <xpath expr="//table[@name='invoice_line_table']" position="before">
       <div class="text-end mb-2">
-        <img t-if="docs[0].zatca_qr_code" t-att-src="'data:image/png;base64,%s' % docs[0].zatca_qr_code" width="120" height="120"/>
+        <img t-if="o.zatca_qr_code" t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
       </div>
     </xpath>
 
-    <!-- ✅ 4. Add Arabic total in words below total -->
+    <!-- ✅ Add Total in Arabic Words -->
     <xpath expr="//div[@id='right-elements']" position="inside">
       <p class="text-end mt-2">
         <strong>Total in Arabic Words:</strong>
-        <t t-esc="docs[0].currency_id.amount_to_text(docs[0].amount_total, lang='ar')"/>
+        <t t-esc="o.currency_id.amount_to_text(o.amount_total, lang='ar')"/>
       </p>
     </xpath>
 
-    <!-- ✅ 5. Add Bank details + Stamp in footer -->
+    <!-- ✅ Add Bank Details + Stamp -->
     <xpath expr="//div[@id='payment_term']" position="after">
       <div class="mt-4" style="text-align: left;">
         <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
