@@ -48,54 +48,109 @@
     </t>
   </tbody>
     </xpath>
-    <xpath expr="//div[@id='right-elements']" position="replace">
-  <div id="right-elements" class="col-12 col-md-5 ms-5 d-inline-block float-end">
-    <div class="clearfix row">
-      <div class="ms-auto">
-        <table class="table table-bordered" style="font-size: 13px;">
-          <tr>
-            <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>
-            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
-          </tr>
-          <tr>
-            <td><strong>Discount :</strong><br/><span>الخصم</span></td>
-            <td class="text-end"><t t-esc="o.amount_discount if hasattr(o, 'amount_discount') else '0.00'"/></td>
-          </tr>
-          <tr>
-            <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>
-            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
-          </tr>
-          <tr>
-            <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>
-            <td class="text-end"><t t-esc="o.amount_tax"/></td>
-          </tr>
-          <tr>
-            <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>
-            <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+<!--    <xpath expr="//div[@id='right-elements']" position="replace">-->
+<!--  <div id="right-elements" class="col-12 col-md-5 ms-5 d-inline-block float-end">-->
+<!--    <div class="clearfix row">-->
+<!--      <div class="ms-auto">-->
+<!--        <table class="table table-bordered" style="font-size: 13px;">-->
+<!--          <tr>-->
+<!--            <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>-->
+<!--            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><strong>Discount :</strong><br/><span>الخصم</span></td>-->
+<!--            <td class="text-end"><t t-esc="o.amount_discount if hasattr(o, 'amount_discount') else '0.00'"/></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>-->
+<!--            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>-->
+<!--            <td class="text-end"><t t-esc="o.amount_tax"/></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>-->
+<!--            <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </xpath>-->
+
+
+<!--    &lt;!&ndash; ✅ Add ZATCA QR Code &ndash;&gt;-->
+<!--    <xpath expr="//table[@name='invoice_line_table']" position="before">-->
+<!--      <div class="text-end mb-2">-->
+<!--        <t t-if="'zatca_qr_code' in o and o.zatca_qr_code">-->
+<!--        <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>-->
+<!--       </t>-->
+<!--      </div>-->
+<!--       <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>-->
+<!--    </xpath>-->
+
+<!--    &lt;!&ndash; ✅ Add Total in Arabic Words &ndash;&gt;-->
+<!--    <xpath expr="//div[@id='right-elements']" position="inside">-->
+<!--      <p class="text-end mt-2" style="font-size:13px;">-->
+<!--        <t t-esc="o.currency_id.amount_to_text(o.amount_total) + ' Only'"/>-->
+<!--      </p>-->
+<!--    </xpath>-->
+<xpath expr="//div[@id='right-elements']" position="replace">
+  <div class="mt-4">
+    <table class="table table-bordered" style="width:100%; font-size:12px; text-align:left;">
+      <tr>
+        <td style="width:25%;">
+          <strong>Delivered by<br/>سلمت بواسطة</strong><br/><br/><br/>
+        </td>
+        <td rowspan="2" style="width:25%; text-align:center;">
+          <img src="/custom_sa_invoice/static/src/img/stamp.png" style="max-height:80px;" />
+        </td>
+        <td rowspan="2" style="width:25%; text-align:center;">
+          <t t-if="o.zatca_qr_code">
+            <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" style="max-height:80px;" />
+          </t>
+        </td>
+        <td style="width:25%;">
+          <strong>Total Amount :<br/>المبلغ الإجمالي</strong><br/>
+          <span t-esc="o.amount_untaxed"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Received by<br/>المستلم</strong><br/><br/><br/>
+        </td>
+        <td>
+          <strong>Discount :<br/>الخصم</strong><br/>
+          <span t-esc="o.amount_discount if hasattr(o, 'amount_discount') else '0.00'"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <strong><t t-esc="o.currency_id.amount_to_text(o.amount_total) + ' Only'"/></strong>
+        </td>
+        <td>
+          <strong>Net Amount :<br/>صافي المجموع</strong><br/>
+          <span t-esc="o.amount_untaxed"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td>
+          <strong>VAT (15%) :<br/>ضريبة القيمة المضافة</strong><br/>
+          <span t-esc="o.amount_tax"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td>
+          <strong>Grand Total :<br/>المبلغ الإجمالي</strong><br/>
+          <span><t t-esc="o.amount_total"/></span>
+        </td>
+      </tr>
+    </table>
   </div>
-  </xpath>
-
-
-    <!-- ✅ Add ZATCA QR Code -->
-    <xpath expr="//table[@name='invoice_line_table']" position="before">
-      <div class="text-end mb-2">
-        <t t-if="'zatca_qr_code' in o and o.zatca_qr_code">
-        <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
-       </t>
-      </div>
-       <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>
-    </xpath>
-
-    <!-- ✅ Add Total in Arabic Words -->
-    <xpath expr="//div[@id='right-elements']" position="inside">
-      <p class="text-end mt-2" style="font-size:13px;">
-        <t t-esc="o.currency_id.amount_to_text(o.amount_total) + ' Only'"/>
-      </p>
-    </xpath>
+</xpath>
 
     <!-- ✅ Add Bank Details + Stamp -->
     <xpath expr="//div[@id='payment_term']" position="after">
@@ -106,13 +161,13 @@
         </div>
       </div>
     </xpath>
-     <!-- ✅ Delivered by & Received by -->
-    <xpath expr="//div[@id='total']" position="after">
-      <div class="d-flex justify-content-between mt-5" style="font-size:12px;">
-        <div><strong>Delivered by:</strong> _______________</div>
-        <div><strong>Received by:</strong> _______________</div>
-      </div>
-    </xpath>
+<!--     &lt;!&ndash; ✅ Delivered by & Received by &ndash;&gt;-->
+<!--    <xpath expr="//div[@id='total']" position="after">-->
+<!--      <div class="d-flex justify-content-between mt-5" style="font-size:12px;">-->
+<!--        <div><strong>Delivered by:</strong> _______________</div>-->
+<!--        <div><strong>Received by:</strong> _______________</div>-->
+<!--      </div>-->
+<!--    </xpath>-->
 
   </template>
 </odoo>
