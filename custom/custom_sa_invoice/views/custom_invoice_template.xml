@@ -47,6 +47,7 @@
       </tr>
     </t>
   </tbody>
+    </xpath>
     <xpath expr="//div[@id='right-elements']" position="replace">
   <div id="right-elements" class="col-12 col-md-5 ms-5 d-inline-block float-end">
     <div class="clearfix row">
@@ -76,7 +77,7 @@
       </div>
     </div>
   </div>
-</xpath>
+  </xpath>
 
 
     <!-- ✅ Add ZATCA QR Code -->
