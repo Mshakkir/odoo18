@@ -11,6 +11,8 @@
      'assets': {
         'web.report_assets_common': [
         'custom_sa_invoice/static/src/img/stamp.png',
+        'custom_sa_invoice/static/src/img/header.png',
+        'custom_sa_invoice/static/src/css/invoice_style.css',
      ],
     },
     'installable': True,

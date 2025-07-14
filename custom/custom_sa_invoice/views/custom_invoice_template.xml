@@ -18,17 +18,17 @@
     <!-- ✅ Replace Table Headers -->
     <xpath expr="//table[@name='invoice_line_table']/thead/tr" position="replace">
       <tr>
-         <th class="text-start">S.N</th>
-        <th class="text-start">Item/صنف</th>
+         <th class="text-start">S.N/م</th>
+        <th class="text-start">Item/الصنف</th>
         <th class="text-start">Description / الوصف</th>
         <th class="text-end">QTY / الكمية</th>
         <th class="text-end">الوحدة / Unit</th>
         <th class="text-end">S.Rate / سعر الوحدة</th>
-        <th class="text-end">Disc</th>
-        <th class="text-end">Amount</th>
+        <th class="text-end">Disc/خصم</th>
+        <th class="text-end">Amount/مبلخ</th>
         <th class="text-end">VAT% / الضريبة</th>
-        <th class="text-end">VAT</th>
-        <th class="text-end">Total Price / الإجمالي</th>
+        <th class="text-end">VAT/ القىمة الضريبة</th>
+        <th class="text-end">Total Price / القىمة الإجمالي</th>
       </tr>
     </xpath>
 
