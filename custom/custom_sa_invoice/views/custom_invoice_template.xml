@@ -47,34 +47,37 @@
       </tr>
     </t>
   </tbody>
-    </xpath>
-
-    <xpath expr="//div[@id='total_amount']" position="replace">
-  <div id="total_amount" class="mt-4">
-    <table class="table table-bordered" style="width: 50%; float: right; font-size: 13px;">
-      <tr>
-        <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>
-        <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
-      </tr>
-      <tr>
-        <td><strong>Discount :</strong><br/><span>الخصم</span></td>
-        <td class="text-end">0.00</td> <!-- Or use dynamic discount field if available -->
-      </tr>
-      <tr>
-        <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>
-        <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
-      </tr>
-      <tr>
-        <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>
-        <td class="text-end"><t t-esc="o.amount_tax"/></td>
-      </tr>
-      <tr>
-        <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>
-        <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>
-      </tr>
-    </table>
+    <xpath expr="//div[@id='right-elements']" position="replace">
+  <div id="right-elements" class="col-12 col-md-5 ms-5 d-inline-block float-end">
+    <div class="clearfix row">
+      <div class="ms-auto">
+        <table class="table table-bordered" style="font-size: 13px;">
+          <tr>
+            <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>
+            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
+          </tr>
+          <tr>
+            <td><strong>Discount :</strong><br/><span>الخصم</span></td>
+            <td class="text-end"><t t-esc="o.amount_discount if hasattr(o, 'amount_discount') else '0.00'"/></td>
+          </tr>
+          <tr>
+            <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>
+            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
+          </tr>
+          <tr>
+            <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>
+            <td class="text-end"><t t-esc="o.amount_tax"/></td>
+          </tr>
+          <tr>
+            <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>
+            <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </xpath>
+
 
     <!-- ✅ Add ZATCA QR Code -->
     <xpath expr="//table[@name='invoice_line_table']" position="before">
