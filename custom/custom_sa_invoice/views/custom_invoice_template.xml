@@ -16,21 +16,65 @@
     </xpath>
 
     <!-- ✅ Replace Table Headers -->
-    <xpath expr="//table[@name='invoice_line_table']/thead/tr" position="replace">
+    <xpath expr="//table[@name='invoice_line_table']/tbody" position="replace">
+<!--      <tr>-->
+<!--         <th class="text-start">S.N/م</th>-->
+<!--        <th class="text-start">Item/الصنف</th>-->
+<!--        <th class="text-start">Description / الوصف</th>-->
+<!--        <th class="text-end">QTY / الكمية</th>-->
+<!--        <th class="text-end">الوحدة / Unit</th>-->
+<!--        <th class="text-end">S.Rate / سعر الوحدة</th>-->
+<!--        <th class="text-end">Disc/خصم</th>-->
+<!--        <th class="text-end">Amount/مبلخ</th>-->
+<!--        <th class="text-end">VAT% / الضريبة</th>-->
+<!--        <th class="text-end">VAT/ القىمة الضريبة</th>-->
+<!--        <th class="text-end">Total Price / القىمة الإجمالي</th>-->
+<!--      </tr>-->
+      <tbody>
+    <t t-foreach="o.invoice_line_ids" t-as="line">
       <tr>
-         <th class="text-start">S.N/م</th>
-        <th class="text-start">Item/الصنف</th>
-        <th class="text-start">Description / الوصف</th>
-        <th class="text-end">QTY / الكمية</th>
-        <th class="text-end">الوحدة / Unit</th>
-        <th class="text-end">S.Rate / سعر الوحدة</th>
-        <th class="text-end">Disc/خصم</th>
-        <th class="text-end">Amount/مبلخ</th>
-        <th class="text-end">VAT% / الضريبة</th>
-        <th class="text-end">VAT/ القىمة الضريبة</th>
-        <th class="text-end">Total Price / القىمة الإجمالي</th>
+        <td class="text-start"><t t-esc="line.custom_sn"/></td>
+        <td class="text-start"><t t-esc="line.custom_item"/></td>
+        <td class="text-start"><t t-esc="line.custom_description"/></td>
+        <td class="text-end"><t t-esc="line.custom_qty"/></td>
+        <td class="text-end"><t t-esc="line.custom_unit"/></td>
+        <td class="text-end"><t t-esc="line.custom_rate" /></td>
+        <td class="text-end"><t t-esc="line.custom_discount" />%</td>
+        <td class="text-end"><t t-esc="line.custom_amount" /></td>
+        <td class="text-end"><t t-esc="line.custom_vat_percent" />%</td>
+        <td class="text-end"><t t-esc="line.custom_vat_amount" /></td>
+        <td class="text-end"><t t-esc="line.custom_total_price" /></td>
       </tr>
+    </t>
+  </tbody>
     </xpath>
+
+    <xpath expr="//div[@id='total_amount']" position="replace">
+  <div id="total_amount" class="mt-4">
+    <table class="table table-bordered" style="width: 50%; float: right; font-size: 13px;">
+      <tr>
+        <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>
+        <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
+      </tr>
+      <tr>
+        <td><strong>Discount :</strong><br/><span>الخصم</span></td>
+        <td class="text-end">0.00</td> <!-- Or use dynamic discount field if available -->
+      </tr>
+      <tr>
+        <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>
+        <td class="text-end"><t t-esc="o.amount_untaxed"/></td>
+      </tr>
+      <tr>
+        <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>
+        <td class="text-end"><t t-esc="o.amount_tax"/></td>
+      </tr>
+      <tr>
+        <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>
+        <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>
+      </tr>
+    </table>
+  </div>
+</xpath>
 
     <!-- ✅ Add ZATCA QR Code -->
     <xpath expr="//table[@name='invoice_line_table']" position="before">
@@ -56,6 +100,13 @@
           <p style="margin-bottom:4px;"><strong>Bank Details:/</strong> SNB Beneficairy Name: Sameer Sharaf Al-Otibi Trading Co.(Al Rajhi Bank)</p>
           <p><strong>IBAN:</strong> SA29 1000 00 10768366000104</p>
         </div>
+      </div>
+    </xpath>
+     <!-- ✅ Delivered by & Received by -->
+    <xpath expr="//div[@id='total']" position="after">
+      <div class="d-flex justify-content-between mt-5" style="font-size:12px;">
+        <div><strong>Delivered by:</strong> _______________</div>
+        <div><strong>Received by:</strong> _______________</div>
       </div>
     </xpath>
 
