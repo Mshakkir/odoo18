@@ -2,21 +2,33 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
+    <xpath expr="//div[hasclass('page')]" position="before">
+      <div class="text-center">
+        <img src="/custom_sa_invoice/static/src/img/header.png" style="width:100%; max-height:120px; object-fit: contain;"/>
+      </div>
+    </xpath>
+
     <!-- ✅ Add Arabic Title -->
     <xpath expr="//div[hasclass('page')]" position="inside">
-      <div class="text-center mb-3">
-        <h2 style="font-weight:bold;">فاتورة ضريبية / Tax Invoice</h2>
+      <div class="text-center mb-2 mt-2">
+        <h2 style="font-weight:bold;font-size:20px;">فاتورة ضريبية / Tax Invoice</h2>
       </div>
     </xpath>
 
     <!-- ✅ Replace Table Headers -->
     <xpath expr="//table[@name='invoice_line_table']/thead/tr" position="replace">
       <tr>
+         <th class="text-start">S.N</th>
+        <th class="text-start">Item/صنف</th>
         <th class="text-start">Description / الوصف</th>
-        <th class="text-end">Quantity / الكمية</th>
-        <th class="text-end">Unit Price / سعر الوحدة</th>
-        <th class="text-end">Taxes / الضريبة</th>
-        <th class="text-end">Total / الإجمالي</th>
+        <th class="text-end">QTY / الكمية</th>
+        <th class="text-end">الوحدة / Unit</th>
+        <th class="text-end">S.Rate / سعر الوحدة</th>
+        <th class="text-end">Disc</th>
+        <th class="text-end">Amount</th>
+        <th class="text-end">VAT% / الضريبة</th>
+        <th class="text-end">VAT</th>
+        <th class="text-end">Total Price / الإجمالي</th>
       </tr>
     </xpath>
 
@@ -26,24 +38,24 @@
         <t t-if="'zatca_qr_code' in o and o.zatca_qr_code">
         <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>
        </t>
-
       </div>
+       <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>
     </xpath>
 
     <!-- ✅ Add Total in Arabic Words -->
     <xpath expr="//div[@id='right-elements']" position="inside">
-      <p class="text-end mt-2">
-        <strong>Total in Arabic Words:</strong>
+      <p class="text-end mt-2" style="font-size:13px;">
         <t t-esc="o.currency_id.amount_to_text(o.amount_total) + ' Only'"/>
       </p>
     </xpath>
 
     <!-- ✅ Add Bank Details + Stamp -->
     <xpath expr="//div[@id='payment_term']" position="after">
-      <div class="mt-4" style="text-align: left;">
-        <p><strong>Bank Name:</strong> Al Rajhi Bank</p>
-        <p><strong>IBAN:</strong> SA12345678901234567890</p>
-        <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>
+      <div class="mt-4" style="display: flex; justify-content: space-between;">
+        <div>
+          <p style="margin-bottom:4px;"><strong>Bank Details:/</strong> SNB Beneficairy Name: Sameer Sharaf Al-Otibi Trading Co.(Al Rajhi Bank)</p>
+          <p><strong>IBAN:</strong> SA29 1000 00 10768366000104</p>
+        </div>
       </div>
     </xpath>
 
