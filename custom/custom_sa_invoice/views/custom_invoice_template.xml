@@ -34,7 +34,7 @@
     <xpath expr="//div[@id='right-elements']" position="inside">
       <p class="text-end mt-2">
         <strong>Total in Arabic Words:</strong>
-        <t t-esc="o.currency_id.amount_to_text(o.amount_total, lang='ar')"/>
+       <t t-esc="env['res.currency']._render_amount_text(o.currency_id, o.amount_total, 'ar')"/>
       </p>
     </xpath>
 
