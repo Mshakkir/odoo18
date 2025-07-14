@@ -18,6 +18,7 @@
           <field name="custom_vat_percent"/>
           <field name="custom_vat_amount" readonly="1"/>
           <field name="custom_total_price" readonly="1"/>
+          </group>
         </xpath>
       </field>
     </record>
