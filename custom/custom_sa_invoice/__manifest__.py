@@ -7,7 +7,6 @@
         'views/report_invoice_wrapper_custom.xml',
         'views/custom_invoice_template.xml',
         'views/override_invoice_report.xml',
-        'views/invoice_line_form_view.xml',
         'views/invoice_line_tree_view.xml',
     ],
      'assets': {
