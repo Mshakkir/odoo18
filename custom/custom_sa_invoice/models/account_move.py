@@ -34,3 +34,23 @@ class AccountMove(models.Model):
             qr_img.save(buffer, format="PNG")
             qr_data = base64.b64encode(buffer.getvalue())
             rec.zatca_qr_code = qr_data
+
+
+    amount_discount = fields.Monetary(
+        string="Discount Amount",
+        currency_field='currency_id',
+        compute='_compute_amount_discount',
+        store=True
+    )
+
+    @api.depends('invoice_line_ids.custom_discount', 'invoice_line_ids.custom_qty', 'invoice_line_ids.custom_rate')
+    def _compute_amount_discount(self):
+        for move in self:
+            total_discount = 0.0
+            for line in move.invoice_line_ids:
+                qty = line.custom_qty or 0.0
+                rate = line.custom_rate or 0.0
+                discount_pct = line.custom_discount or 0.0
+                total_discount += (qty * rate) * (discount_pct / 100.0)
+            move.amount_discount = total_discount
+
