@@ -19,17 +19,17 @@
     <xpath expr="//table[@name='invoice_line_table']/thead" position="replace">
       <thead>
       <tr>
-         <th> S.N/م</th>
-        <th> Item/الصنف</th>
-        <th>Description / الوصف</th>
-        <th>QTY / الكمية</th>
-        <th> الوحدة / Unit</th>
-        <th>S.Rate / سعر الوحدة</th>
-        <th>Disc/خصم</th>
-        <th>Amount/مبلخ</th>
-        <th>VAT% / الضريبة</th>
-        <th> VAT/ القىمة الضريبة</th>
-        <th>Total Price / القىمة الإجمالي</th>
+         <th> S.N م</th>
+        <th> Item الصنف</th>
+        <th>Description الوصف</th>
+        <th>QTY الكمية</th>
+        <th> الوحدة Unit</th>
+        <th>S.Rate سعر الوحدة</th>
+        <th>Disc خصم</th>
+        <th>Amount مبلخ</th>
+        <th>VAT% الضريبة</th>
+        <th> VAT القىمة الضريبة</th>
+        <th>Total Price القىمة الإجمالي</th>
       </tr>
     </thead>
     </xpath>
