@@ -108,7 +108,7 @@
         </td>
         <td rowspan="2" style="width:25%; text-align:center;">
          <t t-if="o.zatca_qr_code">
-           <img t-att-src="'data:image/png;base64,' + o.zatca_qr_code" style="max-height:80px;" />
+           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code.decode('utf-8')" style="max-height:80px;"/>
          </t>
         </td>
         <td style="width:25%;">
