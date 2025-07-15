@@ -41,5 +41,3 @@ zeep
 libsass
 geoip2
 python-stdnum
-num2words
-qrcode
