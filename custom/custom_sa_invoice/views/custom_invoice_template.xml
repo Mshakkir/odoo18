@@ -16,20 +16,24 @@
     </xpath>
 
     <!-- ✅ Replace Table Headers -->
+    <xpath expr="//table[@name='invoice_line_table']/thead" position="replace">
+      <thead>
+      <tr>
+         <th> S.N/م</th>
+        <th> Item/الصنف</th>
+        <th>Description / الوصف</th>
+        <th>QTY / الكمية</th>
+        <th> الوحدة / Unit</th>
+        <th>S.Rate / سعر الوحدة</th>
+        <th>Disc/خصم</th>
+        <th>Amount/مبلخ</th>
+        <th>VAT% / الضريبة</th>
+        <th> VAT/ القىمة الضريبة</th>
+        <th>Total Price / القىمة الإجمالي</th>
+      </tr>
+    </thead>
+    </xpath>
     <xpath expr="//table[@name='invoice_line_table']/tbody" position="replace">
-<!--      <tr>-->
-<!--         <th class="text-start">S.N/م</th>-->
-<!--        <th class="text-start">Item/الصنف</th>-->
-<!--        <th class="text-start">Description / الوصف</th>-->
-<!--        <th class="text-end">QTY / الكمية</th>-->
-<!--        <th class="text-end">الوحدة / Unit</th>-->
-<!--        <th class="text-end">S.Rate / سعر الوحدة</th>-->
-<!--        <th class="text-end">Disc/خصم</th>-->
-<!--        <th class="text-end">Amount/مبلخ</th>-->
-<!--        <th class="text-end">VAT% / الضريبة</th>-->
-<!--        <th class="text-end">VAT/ القىمة الضريبة</th>-->
-<!--        <th class="text-end">Total Price / القىمة الإجمالي</th>-->
-<!--      </tr>-->
       <tbody>
     <t t-foreach="o.invoice_line_ids" t-as="line">
       <tr>
@@ -48,54 +52,7 @@
     </t>
   </tbody>
     </xpath>
-<!--    <xpath expr="//div[@id='right-elements']" position="replace">-->
-<!--  <div id="right-elements" class="col-12 col-md-5 ms-5 d-inline-block float-end">-->
-<!--    <div class="clearfix row">-->
-<!--      <div class="ms-auto">-->
-<!--        <table class="table table-bordered" style="font-size: 13px;">-->
-<!--          <tr>-->
-<!--            <td><strong>Total Amount :</strong><br/><span>المبلغ الإجمالي</span></td>-->
-<!--            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td><strong>Discount :</strong><br/><span>الخصم</span></td>-->
-<!--            <td class="text-end"><t t-esc="o.amount_discount if hasattr(o, 'amount_discount') else '0.00'"/></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td><strong>Net Amount :</strong><br/><span>صافي المجموع</span></td>-->
-<!--            <td class="text-end"><t t-esc="o.amount_untaxed"/></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td><strong>VAT (15%) :</strong><br/><span>ضريبة القيمة المضافة</span></td>-->
-<!--            <td class="text-end"><t t-esc="o.amount_tax"/></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td><strong>Grand Total :</strong><br/><span>المبلغ الإجمالي</span></td>-->
-<!--            <td class="text-end"><strong><t t-esc="o.amount_total"/></strong></td>-->
-<!--          </tr>-->
-<!--        </table>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  </xpath>-->
 
-
-<!--    &lt;!&ndash; ✅ Add ZATCA QR Code &ndash;&gt;-->
-<!--    <xpath expr="//table[@name='invoice_line_table']" position="before">-->
-<!--      <div class="text-end mb-2">-->
-<!--        <t t-if="'zatca_qr_code' in o and o.zatca_qr_code">-->
-<!--        <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" width="120" height="120"/>-->
-<!--       </t>-->
-<!--      </div>-->
-<!--       <img src="/custom_sa_invoice/static/src/img/stamp.png" width="100" height="100"/>-->
-<!--    </xpath>-->
-
-<!--    &lt;!&ndash; ✅ Add Total in Arabic Words &ndash;&gt;-->
-<!--    <xpath expr="//div[@id='right-elements']" position="inside">-->
-<!--      <p class="text-end mt-2" style="font-size:13px;">-->
-<!--        <t t-esc="o.currency_id.amount_to_text(o.amount_total) + ' Only'"/>-->
-<!--      </p>-->
-<!--    </xpath>-->
 <xpath expr="//div[@id='right-elements']" position="replace">
   <div class="mt-4">
     <table class="table table-bordered" style="width:100%; font-size:12px; text-align:left;">
