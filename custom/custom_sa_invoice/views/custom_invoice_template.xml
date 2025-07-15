@@ -122,7 +122,13 @@
         </td>
         <td>
           <strong>Discount :<br/>الخصم</strong><br/>
-         <span t-esc="getattr(o, 'amount_discount', '0.00')"/>
+         <t t-if="hasattr(o, 'amount_discount') and o.amount_discount">
+           <span t-esc="o.amount_discount"/>
+         </t>
+          <t t-else="">
+            <span>0.00</span>
+          </t>
+
         </td>
       </tr>
       <tr>
