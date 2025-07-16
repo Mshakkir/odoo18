@@ -67,7 +67,7 @@
       <td style="text-align:center;">رقم الفاتورة</td>
       <td style="padding:4px 8px;">Date : <t t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
       <td style="text-align:center;">التاريخ</td>
-      <td style="padding:4px 8px;">Delivery Date : <t t-esc="o.custom_delivery_date.strftime('%d/%b/%Y') if o.custom_delivery_date else ''"/></td>
+      <td style="padding:4px 8px;">Delivery Date : <t t-esc="o.invoice_date_due.strftime('%d/%b/%Y') if o.invoice_date_due else ''"/></td>
       <td style="text-align:center;">تاريخ التسليم</td>
     </tr>
   </table>
