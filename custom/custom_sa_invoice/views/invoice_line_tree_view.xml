@@ -4,7 +4,7 @@
     <record id="invoice_line_tree_custom" model="ir.ui.view">
       <field name="name">account.move.invoice.line.tree.inherit</field>
       <field name="model">account.move.line</field>
-      <field name="inherit_id" ref="account.view_invoice_line_tree"/>
+      <field name="inherit_id" ref="account.view_move_line_tree"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='name']" position="after">
           <field name="custom_sn"/>
