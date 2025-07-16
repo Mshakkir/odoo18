@@ -48,9 +48,9 @@
   <!-- Customer Section -->
   <table style="width:100%; border-collapse:collapse;">
     <tr style="background-color:#d3d3d3;">
-      <td colspan="2" style="padding:4px 8px; font-weight:bold;">
-        Sold To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اسم العميل
-      </td>
+  <td colspan="2" style="padding:4px 8px; font-weight:bold;">
+    Sold To &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; اسم العميل
+  </td>
     </tr>
     <tr>
       <td colspan="2" style="padding:6px 10px;">
