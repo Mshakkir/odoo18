@@ -36,19 +36,23 @@
     <xpath expr="//table[@name='invoice_line_table']/tbody" position="replace">
       <tbody>
     <t t-foreach="o.invoice_line_ids" t-as="line">
-      <tr>
-        <td class="text-start"><t t-esc="line.custom_sn"/></td>
-        <td class="text-start"><t t-esc="line.custom_item"/></td>
-        <td class="text-start"><t t-esc="line.custom_description"/></td>
-        <td class="text-end"><t t-esc="line.custom_qty"/></td>
-        <td class="text-end"><t t-esc="line.custom_unit"/></td>
-        <td class="text-end"><t t-esc="line.custom_rate" /></td>
-        <td class="text-end"><t t-esc="line.custom_discount" />%</td>
-        <td class="text-end"><t t-esc="line.custom_amount" /></td>
-        <td class="text-end"><t t-esc="line.custom_vat_percent" />%</td>
-        <td class="text-end"><t t-esc="line.custom_vat_amount" /></td>
-        <td class="text-end"><t t-esc="line.custom_total_price" /></td>
-      </tr>
+  <tr>
+    <td class="text-start"><t t-esc="line.sequence"/></td>
+    <td class="text-start"><t t-esc="line.product_id.display_name"/></td>
+    <td class="text-start"><t t-esc="line.name"/></td>
+    <td class="text-end"><t t-esc="line.quantity"/></td>
+    <td class="text-end"><t t-esc="line.product_uom_id.name"/></td>
+    <td class="text-end"><t t-esc="line.price_unit"/></td>
+    <td class="text-end"><t t-esc="line.discount"/>%</td>
+    <td class="text-end"><t t-esc="line.price_subtotal"/></td>
+    <td class="text-end">
+      <t t-if="line.tax_ids">
+        <t t-esc="', '.join(['%.2f' % tax.amount for tax in line.tax_ids])"/>%
+      </t>
+    </td>
+    <td class="text-end"><t t-esc="line.price_total - line.price_subtotal"/></td>
+    <td class="text-end"><t t-esc="line.price_total"/></td>
+  </tr>
     </t>
   </tbody>
     </xpath>
