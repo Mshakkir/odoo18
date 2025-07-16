@@ -3,17 +3,77 @@
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
 
     <xpath expr="//div[hasclass('page')]" position="before">
-      <div class="text-center">
-        <img src="/custom_sa_invoice/static/src/img/header.png" style="width:100%; max-height:120px; object-fit: contain;"/>
-      </div>
+      <div class="mb-3">
+    <table style="width:100%; border:none; border-collapse:collapse; font-size:12px; color:#581d35;">
+      <tr>
+        <!-- English Left -->
+        <td style="width:35%; text-align:left; vertical-align:top;">
+          <strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong><br/>
+          C.R. 4030216154<br/>
+          VAT Regd : 311299944700003<br/>
+          Al Anwar Centre, Showroom No. 12,<br/>
+          Baladiya Street, Jeddah 23334 - Saudi Arabia<br/>
+          Tel : 0536122833<br/>
+          Email: ssaoe.jeddah@gmail.com
+        </td>
+
+        <!-- Center Logo -->
+        <td style="width:30%; text-align:center;">
+          <img src="/custom_sa_invoice/static/src/img/logo.png"
+               style="height:70px; object-fit:contain;" alt="Logo"/>
+        </td>
+
+        <!-- Arabic Right -->
+        <td style="width:35%; text-align:right; vertical-align:top; direction:rtl;">
+          <strong>شركة سمير شرف العتيبي التجارية</strong><br/>
+          س.ت: ٤٠٣٠٢١٦١٥٤<br/>
+          رقم ضريبة القيمة المضافة: ٣١١٢٩٩٩٤٤٧٠٠٠٠٣<br/>
+          مركز الأنوار، رقم محل ١٢، شارع البلدية<br/>
+          جدة ٢٣٣٣٤ - المملكة العربية السعودية<br/>
+          هاتف: ٠٥٣٦١٢٢٨٣٣<br/>
+          Email: ssaoe.jeddah@gmail.com
+        </td>
+      </tr>
+    </table>
+  </div>
     </xpath>
 
     <!-- ✅ Add Arabic Title -->
-    <xpath expr="//div[hasclass('page')]" position="inside">
-      <div class="text-center mb-2 mt-2">
-        <h2 style="font-weight:bold;font-size:20px;">فاتورة ضريبية / Tax Invoice</h2>
-      </div>
-    </xpath>
+   <xpath expr="//div[hasclass('page')]" position="inside">
+  <div style="background-color:#581d35; color:white; padding:6px 0; text-align:center; margin:10px 0; font-weight:bold; font-size:16px;">
+    فاتورة ضريبية / Tax Invoice
+  </div>
+     <div style="border:1px solid #999; margin-bottom:10px; font-size:12px;">
+
+  <!-- Customer Section -->
+  <table style="width:100%; border-collapse:collapse;">
+    <tr style="background-color:#d3d3d3;">
+      <td colspan="2" style="padding:4px 8px; font-weight:bold;">
+        Sold To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; اسم العميل
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding:6px 10px;">
+        <strong><t t-esc="o.partner_id.name"/></strong><br/><br/>
+        <span><strong>VAT NO :</strong> <t t-esc="o.partner_id.vat or 'N/A'"/></span>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Invoice Info Section -->
+  <table style="width:100%; border-top:1px solid #999; background-color:#d3d3d3; font-weight:bold;">
+    <tr>
+      <td style="padding:4px 8px;">Inv #. <t t-esc="o.name"/></td>
+      <td style="text-align:center;">رقم الفاتورة</td>
+      <td style="padding:4px 8px;">Date : <t t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
+      <td style="text-align:center;">التاريخ</td>
+      <td style="padding:4px 8px;">Delivery Date : <t t-esc="o.custom_delivery_date.strftime('%d/%b/%Y') if o.custom_delivery_date else ''"/></td>
+      <td style="text-align:center;">تاريخ التسليم</td>
+    </tr>
+  </table>
+</div>
+
+</xpath>
 
     <!-- ✅ Replace Table Headers -->
     <xpath expr="//table[@name='invoice_line_table']/thead" position="replace">
@@ -90,7 +150,7 @@
         </td>
         <td>
           <strong>Discount :<br/>الخصم</strong><br/>
-        
+
         </td>
       </tr>
       <tr>
@@ -121,14 +181,23 @@
 </xpath>
 
     <!-- ✅ Add Bank Details + Stamp -->
-    <xpath expr="//div[@id='payment_term']" position="after">
-      <div class="mt-4" style="display: flex; justify-content: space-between;">
-        <div>
-          <p style="margin-bottom:4px;"><strong>Bank Details:/</strong> SNB Beneficairy Name: Sameer Sharaf Al-Otibi Trading Co.(Al Rajhi Bank)</p>
-          <p><strong>IBAN:</strong> SA29 1000 00 10768366000104</p>
-        </div>
-      </div>
-    </xpath>
+  <xpath expr="//div[@id='payment_term']" position="after">
+  <div class="mt-4" style="margin-top:10px;">
+    <table style="width:100%; border:1px solid #000; border-collapse:collapse; font-size:12px;">
+      <tr>
+        <td style="width:25%; padding:6px 10px; border-right:1px solid #000; text-align:right; font-weight:bold;">
+          التفاصيل المصرفية :
+        </td>
+        <td style="width:75%; padding:6px 10px; text-align:left;">
+          <strong>Bank Details :</strong><br/>
+          SNB Beneficiary Name : Sameer Sharaf Al-Otibi Trading Co.<br/>
+          IBAN : SA29 1000 00 10768366000104
+        </td>
+      </tr>
+    </table>
+  </div>
+</xpath>
+
 
 
   </template>
