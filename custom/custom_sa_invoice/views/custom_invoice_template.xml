@@ -118,13 +118,7 @@
         </div>
       </div>
     </xpath>
-<!--     &lt;!&ndash; ✅ Delivered by & Received by &ndash;&gt;-->
-<!--    <xpath expr="//div[@id='total']" position="after">-->
-<!--      <div class="d-flex justify-content-between mt-5" style="font-size:12px;">-->
-<!--        <div><strong>Delivered by:</strong> _______________</div>-->
-<!--        <div><strong>Received by:</strong> _______________</div>-->
-<!--      </div>-->
-<!--    </xpath>-->
+
 
   </template>
 </odoo>
