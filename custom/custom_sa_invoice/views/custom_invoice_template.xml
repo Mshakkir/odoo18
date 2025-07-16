@@ -90,7 +90,7 @@
         </td>
         <td>
           <strong>Discount :<br/>الخصم</strong><br/>
-        <span t-esc="o.amount_discount or '0.00'"/>
+        
         </td>
       </tr>
       <tr>
