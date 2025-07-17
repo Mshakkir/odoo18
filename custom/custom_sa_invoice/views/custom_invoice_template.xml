@@ -66,9 +66,31 @@
       <td style="text-align:center;">رقم الفاتورة</td>
       <td style="padding:4px 8px;">Date : <t t-esc="doc.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
       <td style="text-align:center;">التاريخ</td>
-      <td><strong>Delivery Date:</strong> <t t-esc="doc.custom_delivery_date or ''"/></td> <td>تاريخ التسليم</td>
-
+      <td><strong>Delivery Date :</strong>
+      <span t-esc="format_date(doc.invoice_date_due or doc.date_delivery)"/></td> <strong>تاريخ التسليم :</strong>
     </tr>
+     <tr>
+        <td style="border: 1px solid #000; padding: 4px; width: 33%;">
+          <strong>PO No:</strong> <t t-esc="doc.invoice_origin or ''"/>
+        </td>
+        <td style="border: 1px solid #000; padding: 4px; width: 33%;">
+          <strong>Terms:</strong> <t t-esc="doc.invoice_payment_term_id.name or ''"/>
+        </td>
+        <td style="border: 1px solid #000; padding: 4px; width: 34%;">
+          <strong>Delivery Note:</strong> <t t-esc="doc.ref or ''"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 4px; text-align: right;">
+          <strong>رقم أمر الشراء :</strong> <t t-esc="doc.invoice_origin or ''"/>
+        </td>
+        <td style="border: 1px solid #000; padding: 4px; text-align: right;">
+          <strong>الشروط :</strong> <t t-esc="doc.invoice_payment_term_id.name or ''"/>
+        </td>
+        <td style="border: 1px solid #000; padding: 4px; text-align: right;">
+          <strong>مذكرة التسليم :</strong> <t t-esc="doc.ref or ''"/>
+        </td>
+      </tr>
   </table>
 </div>
 
