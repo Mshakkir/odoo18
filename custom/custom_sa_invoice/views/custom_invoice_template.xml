@@ -3,7 +3,6 @@
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
     <xpath expr="//div[@id='informations']/div[@name='due_date']" position="replace"/>
 
-
     <xpath expr="//div[hasclass('page')]" position="before">
       <div class="mb-3">
     <table style="width:100%; border:none; border-collapse:collapse; font-size:12px; color:#581d35;">
@@ -38,10 +37,7 @@
       </tr>
     </table>
   </div>
-    </xpath>
 
-    <!-- ✅ Add Arabic Title -->
-   <xpath expr="//div[hasclass('page')]" position="inside">
   <div style="background-color:#581d35; color:white; padding:6px 0; text-align:center; margin:10px 0; font-weight:bold; font-size:16px;">
     فاتورة ضريبية / Tax Invoice
   </div>
@@ -56,8 +52,8 @@
     </tr>
     <tr>
       <td colspan="2" style="padding:6px 10px;">
-        <strong><t t-esc="o.partner_id.name"/></strong><br/><br/>
-        <span><strong>VAT NO :</strong> <t t-esc="o.partner_id.vat or 'N/A'"/></span>
+        <strong><t t-esc="doc.partner_id.name"/></strong><br/><br/>
+        <span><strong>VAT NO :</strong> <t t-esc="doc.partner_id.vat or 'N/A'"/></span>
       </td>
     </tr>
   </table>
@@ -65,16 +61,11 @@
   <!-- Invoice Info Section -->
   <table style="width:100%; border-top:1px solid #999; background-color:#d3d3d3; font-weight:bold;">
     <tr>
-      <td style="padding:4px 8px;">Inv #. <t t-esc="o.name"/></td>
+      <td style="padding:4px 8px;">Inv #. <t t-esc="doc.name"/></td>
       <td style="text-align:center;">رقم الفاتورة</td>
-      <td style="padding:4px 8px;">Date : <t t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
+      <td style="padding:4px 8px;">Date : <t t-esc="doc.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
       <td style="text-align:center;">التاريخ</td>
-      <t t-set="sale" t-value="o.invoice_origin and o.env['sale.order'].search([('name', '=', o.invoice_origin)], limit=1)"/>
-      <t t-set="delivery" t-value="sale and sale.picking_ids and sale.picking_ids.filtered(lambda p: p.state == 'done')"/>
-      <td colspan="2" style="padding:4px 8px;">Delivery Date:
-        <t t-esc="delivery and delivery[0].scheduled_date.strftime('%d/%b/%Y') or ''"/>
-      </td>
-      <td>تاريخ التسليم</td>
+      <td><strong>Delivery Date:</strong> <t t-esc="doc.custom_delivery_date or ''"/></td> <td>تاريخ التسليم</td>
 
     </tr>
   </table>
