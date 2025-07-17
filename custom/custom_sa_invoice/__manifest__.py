@@ -3,6 +3,7 @@
     'version': '1.0',
     'depends': ['account','base'],
     'license': 'LGPL-3',
+    'sequence': 1,
     'data': [
         'views/report_invoice_wrapper_custom.xml',
         'views/custom_invoice_template.xml',
