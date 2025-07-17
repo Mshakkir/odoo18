@@ -1,6 +1,10 @@
 
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[@id='informations']/div[@name='due_date']" position="replace"/>
+    <xpath expr="//div[@class='col-auto o_company_info']" position="replace"/>
+    <xpath expr="//span[@t-field='o.name']" position="replace"/>
+     <xpath expr="//div[hasclass('invoice_payment_text')]" position="replace"/>
 
     <xpath expr="//div[hasclass('page')]" position="before">
       <div class="mb-3">
@@ -67,6 +71,8 @@
       <td style="text-align:center;">رقم الفاتورة</td>
       <td style="padding:4px 8px;">Date : <t t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
       <td style="text-align:center;">التاريخ</td>
+      <t t-set="sale" t-value="o.invoice_origin and o.env['sale.order'].search([('name', '=', o.invoice_origin)], limit=1)"/>
+      <t t-set="delivery" t-value="sale and sale.picking_ids and sale.picking_ids.filtered(lambda p: p.state == 'done')"/>
       <td colspan="2" style="padding:4px 8px;">Delivery Date:
         <t t-esc="delivery and delivery[0].scheduled_date.strftime('%d/%b/%Y') or ''"/>
       </td>
@@ -139,7 +145,8 @@
         </td>
         <td rowspan="2" style="width:25%; text-align:center;">
          <t t-if="o.zatca_qr_code">
-           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code.decode('utf-8')" style="max-height:80px;"/>
+           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" style="max-height:80px;" />
+
          </t>
         </td>
         <td style="width:25%;">
