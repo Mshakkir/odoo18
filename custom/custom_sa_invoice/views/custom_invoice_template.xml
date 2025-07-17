@@ -2,9 +2,9 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
     <xpath expr="//div[@id='informations']/div[@name='due_date']" position="replace"/>
-   <xpath expr="//div[contains(@class, 'row')][.//div[contains(@class, 'o_company_info')]]" position="replace"/>
-
+    <xpath expr="//div[contains(@class, 'row') and .//div[contains(@class, 'col-auto') and .//span[@name='invoice_company_details']]]" position="replace"/>
     <xpath expr="//span[@t-field='o.name']" position="replace"/>
+
      <xpath expr="//div[hasclass('invoice_payment_text')]" position="replace"/>
     <xpath expr="//div[hasclass('page')]" position="before">
       <div class="mb-3">
