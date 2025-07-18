@@ -10,39 +10,38 @@
 
     <xpath expr="//div[hasclass('page')]" position="before">
 
-      <div class="mb-3">
-<!--    <table style="width:100%; border:none; border-collapse:collapse; font-size:12px; color:#581d35;">-->
-      <tr>
-        <!-- English Left -->
-        <td style="width:35%; text-align:left; vertical-align:top;">
-          <strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong><br/>
-          C.R. 4030216154<br/>
-          VAT Regd : 311299944700003<br/>
-          Al Anwar Centre, Showroom No. 12,<br/>
-          Baladiya Street, Jeddah 23334 - Saudi Arabia<br/>
-          Tel : 0536122833<br/>
-          Email: ssaoe.jeddah@gmail.com
-        </td>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
 
-        <!-- Center Logo -->
-        <td style="width:30%; text-align:center;">
-          <img src="/custom_sa_invoice/static/src/img/logo.png"
-               style="height:70px; object-fit:contain;" alt="Logo"/>
-        </td>
-
-        <!-- Arabic Right -->
-        <td style="width:35%; text-align:right; vertical-align:top; direction:rtl;">
-          <strong>شركة سمير شرف العتيبي التجارية</strong><br/>
-          س.ت: ٤٠٣٠٢١٦١٥٤<br/>
-          رقم ضريبة القيمة المضافة: ٣١١٢٩٩٩٤٤٧٠٠٠٠٣<br/>
-          مركز الأنوار، رقم محل ١٢، شارع البلدية<br/>
-          جدة ٢٣٣٣٤ - المملكة العربية السعودية<br/>
-          هاتف: ٠٥٣٦١٢٢٨٣٣<br/>
-          Email: ssaoe.jeddah@gmail.com
-        </td>
-      </tr>
-<!--    </table>-->
+  <!-- English Left -->
+  <div style="width: 35%; text-align: left;">
+    <strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong><br/>
+    C.R. 4030216154<br/>
+    VAT Regd : 311299944700003<br/>
+    Al Anwar Centre, Showroom No. 12,<br/>
+    Baladiya Street, Jeddah 23334 - Saudi Arabia<br/>
+    Tel : 0536122833<br/>
+    Email: ssaoe.jeddah@gmail.com
   </div>
+
+  <!-- Center Logo -->
+  <div style="width: 30%; text-align: center;">
+    <img src="/custom_sa_invoice/static/src/img/logo.png"
+         style="height: 70px; object-fit: contain;" alt="Logo"/>
+  </div>
+
+  <!-- Arabic Right -->
+  <div style="width: 35%; text-align: right; direction: rtl;">
+    <strong>شركة سمير شرف العتيبي التجارية</strong><br/>
+    س.ت: ٤٠٣٠٢١٦١٥٤<br/>
+    رقم ضريبة القيمة المضافة: ٣١١٢٩٩٩٤٤٧٠٠٠٠٣<br/>
+    مركز الأنوار، رقم محل ١٢، شارع البلدية<br/>
+    جدة ٢٣٣٣٤ - المملكة العربية السعودية<br/>
+    هاتف: ٠٥٣٦١٢٢٨٣٣<br/>
+    Email: ssaoe.jeddah@gmail.com
+  </div>
+
+</div>
+
 
   <div style="background-color:#581d35; color:white; padding:6px 0; text-align:center; margin:10px 0; font-weight:bold; font-size:16px;">
     فاتورة ضريبية / Tax Invoice
@@ -170,8 +169,8 @@
           <img src="/custom_sa_invoice/static/src/img/stamp.png" style="max-height:80px;" />
         </td>
         <td rowspan="2" style="width:25%; text-align:center;">
-         <t t-if="o.zatca_qr_code">
-           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code('utf-8')" style="max-height:80px;" />
+           <t t-if="o.zatca_qr_code">
+             <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code.decode('utf-8')" style="max-height:80px;" />
 
          </t>
         </td>

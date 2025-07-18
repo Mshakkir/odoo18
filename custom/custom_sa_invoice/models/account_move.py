@@ -36,3 +36,14 @@ class AccountMove(models.Model):
             rec.zatca_qr_code = qr_data
 
 
+   delivery_date = fields.Datetime(string="Delivery Date", compute="_compute_delivery_date", store=False)
+def _compute_delivery_date(self):
+    for move in self:
+        delivery_date = False
+        sale_lines = move.invoice_line_ids.mapped('sale_line_ids')
+        if sale_lines:
+            pickings = sale_lines.mapped('order_id').mapped('picking_ids').filtered(lambda p: p.state == 'done')
+            if pickings:
+                # Get last picking by date_done
+                delivery_date = sorted(pickings, key=lambda p: p.date_done or p.scheduled_date)[-1].date_done
+        move.delivery_date = delivery_date
