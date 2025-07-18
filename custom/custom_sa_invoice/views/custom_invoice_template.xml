@@ -10,11 +10,11 @@
 
     <xpath expr="//div[hasclass('page')]" position="before">
 
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap;">
 
   <!-- English Left -->
-  <div style="width: 35%; text-align: left;">
-    <strong>SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong><br/>
+   <div style="width: 32%; text-align: left; font-size: 13px; line-height: 1.6;">
+    <u><strong style="color: #581d35;">SAMEER SHARAF AL OTAIBI TRADING COMPANY</strong></u><br/>
     C.R. 4030216154<br/>
     VAT Regd : 311299944700003<br/>
     Al Anwar Centre, Showroom No. 12,<br/>
@@ -24,14 +24,14 @@
   </div>
 
   <!-- Center Logo -->
-  <div style="width: 30%; text-align: center;">
+  <div style="width: 50%; text-align: center;">
     <img src="/custom_sa_invoice/static/src/img/logo.png"
          style="height: 70px; object-fit: contain;" alt="Logo"/>
   </div>
 
   <!-- Arabic Right -->
-  <div style="width: 35%; text-align: right; direction: rtl;">
-    <strong>شركة سمير شرف العتيبي التجارية</strong><br/>
+<div style="width: 32%; text-align: right; direction: rtl; font-size: 13px; line-height: 1.6;">
+    <u><strong style="color: #581d35;">شركة سمير شرف العتيبي التجارية</strong></u><br/>
     س.ت: ٤٠٣٠٢١٦١٥٤<br/>
     رقم ضريبة القيمة المضافة: ٣١١٢٩٩٩٤٤٧٠٠٠٠٣<br/>
     مركز الأنوار، رقم محل ١٢، شارع البلدية<br/>
@@ -73,13 +73,12 @@
         &#160;&#160;&#160;&#160;
         <span t-esc="o.name"/>
       </td>
-      <td style="padding:4px 8px;">
-        <span>Date :</span>
-        &#160;&#160;&#160;&#160;
-        <span>التاريخ</span>
-        &#160;&#160;&#160;&#160;
-        <span t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/>
-      </td>
+     <td style="padding:4px 8px; white-space: nowrap;">
+  <strong>Date :</strong>
+  <span t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/>
+  &#160;&#160;&#160;&#160;
+  <strong>التاريخ</strong>
+</td>
       <td t-if="o.delivery_date">
      <div class="col" name="delivery_date">
     <strong>Delivery Date / تاريخ التسليم :</strong>
@@ -161,10 +160,10 @@
         <td style="width:25%;">
           <strong>Delivered by<br/>سلمت بواسطة</strong><br/><br/><br/>
         </td>
-        <td rowspan="2" style="width:25%; text-align:center;">
+        <td rowspan="2" style="width:50%; text-align:center;">
           <img src="/custom_sa_invoice/static/src/img/stamp.png" style="max-height:80px;" />
         </td>
-        <td rowspan="2" style="width:25%; text-align:center;">
+        <td rowspan="2" style="width:50%; text-align:center;">
            <t t-if="o.zatca_qr_code">
              <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code.decode('utf-8')" style="max-height:80px;" />
 
@@ -214,19 +213,24 @@
     <!-- ✅ Add Bank Details + Stamp -->
   <xpath expr="//div[@id='payment_term']" position="after">
   <div class="mt-4" style="margin-top:10px;">
-    <table style="width:100%; border:1px solid #000; border-collapse:collapse; font-size:12px;">
-      <tr>
-        <td style="width:25%; padding:6px 10px; border-right:1px solid #000; text-align:right; font-weight:bold;">
-          التفاصيل المصرفية :
-        </td>
-        <td style="width:75%; padding:6px 10px; text-align:left;">
-          <strong>Bank Details :</strong><br/>
-          SNB Beneficiary Name : Sameer Sharaf Al-Otibi Trading Co.<br/>
-          IBAN : SA29 1000 00 10768366000104
-        </td>
-      </tr>
-    </table>
-  </div>
+  <table style="width:100%; border:1px solid #000; border-collapse:collapse; font-size:12px;">
+    <tr>
+      <td style="width:50%; padding:6px 10px; text-align:left; font-weight:bold; border-right:1px solid #000;">
+        <u>Bank Details :</u>
+      </td>
+      <td style="width:50%; padding:6px 10px; text-align:right; font-weight:bold;">
+        <u>التفاصيل المصرفية :</u>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding:6px 10px; text-align:center;">
+        SNB Beneficiary Name : Sameer Sharaf Al-Otibi Trading Co.<br/>
+        IBAN : SA29 1000 00 10768366000104
+      </td>
+    </tr>
+  </table>
+</div>
+
 </xpath>
 
 
