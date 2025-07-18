@@ -2,8 +2,8 @@
 <odoo>
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
     <xpath expr="//div[@id='informations']/div[@name='due_date']" position="replace"/>
-    <xpath expr="//div[contains(@class, 'invoice_partner')]" position="replace"/>
-    <xpath expr="//div[contains(@class, 'invoice_metadata')]" position="replace"/>
+    <xpath expr="//div[hasclass('row')][.//div[@name='no_shipping'] or .//div[@name='address_same_as_shipping'] or .//div[@name='address_not_same_as_shipping']]" position="replace"/>
+
 
     <xpath expr="//div[hasclass('page')]" position="before">
 
