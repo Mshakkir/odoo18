@@ -3,11 +3,10 @@
   <template id="report_invoice_document_inherit_sa" inherit_id="account.report_invoice_document">
     <xpath expr="//div[@id='informations']/div[@name='due_date']" position="replace"/>
     <xpath expr="//div[hasclass('row')][.//div[@name='no_shipping'] or .//div[@name='address_same_as_shipping'] or .//div[@name='address_not_same_as_shipping']]" position="replace"/>
-    <xpath expr="//t[@t-set='layout_document_title']/span[@t-if='o.name and o.name != \']" position="replace"/>
+    <xpath expr="//t[@t-set='layout_document_title']" position="replace"/>
     <xpath expr="//div[@id='informations']/div[@name='invoice_date']" position="replace"/>
     <xpath expr="//div[@id='informations']/div[@name='delivery_date']" position="replace"/>
-
-
+    <xpath expr="//div[@class='mb-3' and contains(@t-if, 'payment_reference')]" position="replace"/>
 
     <xpath expr="//div[hasclass('page')]" position="before">
 
