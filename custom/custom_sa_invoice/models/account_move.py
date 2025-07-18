@@ -36,7 +36,7 @@ class AccountMove(models.Model):
             rec.zatca_qr_code = qr_data
 
 
-   delivery_date = fields.Datetime(string="Delivery Date", compute="_compute_delivery_date", store=False)
+delivery_date = fields.Datetime(string="Delivery Date", compute="_compute_delivery_date", store=False)
 def _compute_delivery_date(self):
     for move in self:
         delivery_date = False
