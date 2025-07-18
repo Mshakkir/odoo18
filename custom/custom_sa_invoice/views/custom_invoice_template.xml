@@ -67,16 +67,27 @@
   <!-- Invoice Info Section -->
   <table style="width:100%; border-top:1px solid #999; background-color:#d3d3d3; font-weight:bold;">
     <tr>
-      <td style="padding:4px 8px;">Inv #. <t t-esc="o.name"/></td>
-      <td style="text-align:center;">رقم الفاتورة</td>
-      <td style="padding:4px 8px;">Date : <t t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/></td>
-      <td style="text-align:center;">التاريخ</td>
-      <t t-if="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids">
-      <td><strong>Delivery Date / تاريخ التسليم :</strong></td>
-
-      <td>
-        <span t-esc="o.env['ir.qweb.field.date']._value_to_text(o.invoice_origin and o.invoice_origin and o.invoice_line_ids[0].sale_line_ids.order_id.picking_ids[0].date_done)"/>
+      <td style="padding:4px 8px;">
+        <span>Inv #.</span>
+        &#160;&#160;&#160;&#160;
+        <span>رقم الفاتورة</span>
+        &#160;&#160;&#160;&#160;
+        <span t-esc="o.name"/>
       </td>
+      <td style="padding:4px 8px;">
+        <span>Date :</span>
+        &#160;&#160;&#160;&#160;
+        <span>التاريخ</span>
+        &#160;&#160;&#160;&#160;
+        <span t-esc="o.invoice_date.strftime('%d/%b/%Y') if o.invoice_date else ''"/>
+      </td>
+
+      <t t-if="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids and o.invoice_line_ids[0].sale_line_ids[0].order_id.picking_ids">
+        <td><strong>Delivery Date / تاريخ التسليم :</strong></td>
+        <td>
+          <t t-set="delivery_date" t-value="o.invoice_line_ids[0].sale_line_ids[0].order_id.picking_ids[0].date_done"/>
+          <span t-esc="o.env['ir.qweb.field.date']._value_to_text(delivery_date) if delivery_date else ''"/>
+        </td>
       </t>
     </tr>
 
@@ -157,7 +168,7 @@
         </td>
         <td rowspan="2" style="width:25%; text-align:center;">
          <t t-if="o.zatca_qr_code">
-           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code" style="max-height:80px;" />
+           <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code('utf-8')" style="max-height:80px;" />
 
          </t>
         </td>
