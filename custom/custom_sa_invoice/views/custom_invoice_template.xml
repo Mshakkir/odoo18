@@ -83,12 +83,16 @@
       </td>
 
       <t t-if="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids and o.invoice_line_ids[0].sale_line_ids[0].order_id.picking_ids">
-        <td><strong>Delivery Date / تاريخ التسليم :</strong></td>
-        <td>
-          <t t-set="delivery_date" t-value="o.invoice_line_ids[0].sale_line_ids[0].order_id.picking_ids[0].date_done"/>
-          <span t-esc="o.env['ir.qweb.field.date']._value_to_text(delivery_date) if delivery_date else ''"/>
-        </td>
-      </t>
+  <t t-set="pickings" t-value="o.invoice_line_ids[0].sale_line_ids[0].order_id.picking_ids.sorted(key=lambda p: p.date_done or p.scheduled_date)"/>
+  <t t-set="last_delivery" t-value="pickings[-1].date_done"/>
+  <tr>
+    <td><strong>Delivery Date / تاريخ التسليم :</strong></td>
+    <td>
+      <span t-esc="o.env['ir.qweb.field.date']._value_to_text(last_delivery) if last_delivery else ''"/>
+    </td>
+  </tr>
+</t>
+
     </tr>
 
      <tr>

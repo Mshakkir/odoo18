@@ -9,7 +9,7 @@ class AccountMove(models.Model):
 
     zatca_qr_code = fields.Binary("ZATCA QR", compute="_generate_zatca_qr", store=True)
 
-    @api.depends('amount_total', 'amount_tax', 'invoice_date', 'partner_id', 'company_id')
+    @api.depends('amount_total', 'amount_tax', 'invoice_date', 'partner_id', 'company_id', 'company_id.vat')
     def _generate_zatca_qr(self):
         for rec in self:
             if not rec.company_id or not rec.company_id.vat:
