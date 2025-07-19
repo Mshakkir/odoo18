@@ -98,9 +98,10 @@
         <td style="border: 1px solid #000; padding: 4px; width: 33%;">
           <strong>Terms:</strong> <t t-esc="o.invoice_payment_term_id.name or ''"/>
         </td>
-        <td style="border: 1px solid #000; padding: 4px; width: 34%;">
-          <strong>Delivery Note:</strong> <t t-esc="o.ref or ''"/>
-        </td>
+       <td style="border: 1px solid #000; padding: 4px; width: 34%;">
+           <strong>Delivery Note:</strong>
+           <t t-esc="o.delivery_note or ''"/>
+       </td>
       </tr>
   </table>
 </div>

@@ -7,6 +7,7 @@ from datetime import datetime
 class AccountMove(models.Model):
     _inherit = 'account.move'
     po_number = fields.Char(string='P.O Number')
+    delivery_note = fields.Char(string="Delivery Note")
 
     zatca_qr_code = fields.Binary("ZATCA QR", compute="_generate_zatca_qr", store=True)
 
