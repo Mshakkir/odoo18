@@ -24,7 +24,7 @@
   </div>
 
   <!-- Center Logo -->
-  <div style="width: 50%; text-align: center;">
+  <div style="width:50px; text-align: center;">
     <img src="/custom_sa_invoice/static/src/img/logo.png"
          style="height: 70px; object-fit: contain;" alt="Logo"/>
   </div>
