@@ -215,23 +215,16 @@
   <div class="mt-4" style="margin-top:10px;">
   <table style="width:100%; border:1px solid #000; border-collapse:collapse; font-size:12px;">
     <tr>
-      <td style="width:50%; padding:6px 10px; text-align:left; font-weight:bold; border-right:1px solid #000;">
-        <u>Bank Details :</u>
-      </td>
-      <td style="width:50%; padding:6px 10px; text-align:right; font-weight:bold;">
-        <u>التفاصيل المصرفية :</u>
-      </td>
-      <td colspan="2" style="padding:6px 10px; text-align:center;">
-        SNB Beneficiary Name : Sameer Sharaf Al-Otibi Trading Co.<br/>
-        IBAN : SA29 1000 00 10768366000104
-      </td>
+  <td colspan="4" style="padding:6px 10px; white-space: nowrap; text-align:left; font-weight:bold;">
+    <strong>Bank Details :</strong>
+    &#160;&#160;&#160;&#160;
+    <strong>التفاصيل المصرفية :</strong><br/>
+    SNB Beneficiary Name: Sameer Sharaf Al-Otibi Trading Co.<br/>
+    IBAN: SA29 1000 00 10768366000104
+  </td>
     </tr>
   </table>
 </div>
-
 </xpath>
-
-
-
   </template>
 </odoo>
