@@ -8,6 +8,7 @@
         'views/report_invoice_wrapper_custom.xml',
         'views/custom_invoice_template.xml',
         'views/override_invoice_report.xml',
+        'views/account_move_view.xml',
 
     ],
      'assets': {

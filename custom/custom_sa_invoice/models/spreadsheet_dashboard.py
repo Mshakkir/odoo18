@@ -7,14 +7,7 @@ class SpreadsheetDashboard(models.Model):
     def get_readonly_dashboard(self):
         # Fallback to empty JSON if field is empty or null
         data = self.spreadsheet_data or '{}'
-        snapshot = json.loads(self.spreadsheet_data or '{}')
+        snapshot = json.loads(data)
 
-        widgets = snapshot.get('widgets', [])
-        filters = snapshot.get('filters', {})
-
-        return {
-            'widget_count': len(widgets),
-            'has_filters': bool(filters)
-        }
-
-
+        # Do your logic with `snapshot` here
+        return snapshot  # or whatever your method normally returns

@@ -6,6 +6,7 @@ from datetime import datetime
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
+    po_number = fields.Char(string='P.O Number')
 
     zatca_qr_code = fields.Binary("ZATCA QR", compute="_generate_zatca_qr", store=True)
 
@@ -47,3 +48,7 @@ def _compute_delivery_date(self):
                 # Get last picking by date_done
                 delivery_date = sorted(pickings, key=lambda p: p.date_done or p.scheduled_date)[-1].date_done
         move.delivery_date = delivery_date
+
+
+
+
