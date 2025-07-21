@@ -142,6 +142,9 @@
                           <th style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:11px;">
                           </th>
                           <th style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:11px;">
+                              القيمة الضريبة <br/><span style="font-weight:normal;">VAT</span>
+                          </th>
+                          <th style="border: 1px solid #000; text-align:center; font-weight:bold; font-size:11px;">
                               القيمة الإجمالية<br/><span style="font-weight:normal;">Total Price</span>
                           </th>
 
@@ -181,7 +184,7 @@
         <td rowspan="2" style="width:20%; text-align:center; border:1px solid #000;">
           <img src="/custom_sa_invoice/static/src/img/stamp.png" style="max-height:100px; max-width:100px;" />
         </td>
-        <td rowspan="2" style="width:20%; text-align:center; border:1px solid #000;">
+        <td rowspan="2" style="width:20px; text-align:center; border:1px solid #000;">
           <t t-if="o.zatca_qr_code">
             <img t-att-src="'data:image/png;base64,%s' % o.zatca_qr_code.decode('utf-8')" style="max-height:100px; max-width:100px;" />
           </t>
